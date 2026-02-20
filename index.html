@@ -772,7 +772,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
           <line x1="0" y1="280" x2="420" y2="280" stroke="#ff00ff" stroke-width=".5" opacity=".2"/>
           <text x="20" y="550" font-family="monospace" font-size="9" fill="#ff00ff" opacity=".4" letter-spacing="2">VB.PORTFOLIO — 2025</text>
         </svg>
-        <img id="aboutImgEl" alt="Veronica Baccarin" src="1000001743_3023d97f0ee356a0a5cad238d7ee8d1a-20_03_2025, 09_54_26.jpg" style="display:block;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
+        <img id="aboutImgEl" alt="Veronica Baccarin" src="about-photo-optimized.jpg" loading="lazy" decoding="async" fetchpriority="low" width="420" height="560" style="display:block;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
       </div>
     </div>
     <div class="about-content-col">
@@ -909,14 +909,14 @@ const DEF={
   contactIg:'@veronica.baccarin',
   contactBe:'behance.net/veronicabaccarin',
   contactLi:'veronicabaccarin',
-  aboutImg:'1000001743_3023d97f0ee356a0a5cad238d7ee8d1a-20_03_2025, 09_54_26.jpg',
+  aboutImg:'about-photo-optimized.jpg',
   projects:[
-    {id:'p1',name:"L'Abete - Logo Design",cat:'illustration',catLabel:'Logo Design',shape:'wide',img:'mockup_1_insegna_labete.png'},
-    {id:'p2',name:'4Zeus - Branding',cat:'brand',catLabel:'Branding',shape:'tall',img:'Free Modern Business Card PSD Mockup_01.png'},
-    {id:'p3',name:'Bar Vecia Padova - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'Free Wooden Storefront Mockup.jpg'},
-    {id:'p4',name:'Natura Viva - Editoriale',cat:'editorial',catLabel:'Editoriale',shape:'',img:'mockup_succhi_1_supermercato.png'},
+    {id:'p1',name:"L'Abete - Logo Design",cat:'illustration',catLabel:'Logo Design',shape:'wide',img:'mockup_1_insegna_labete-optimized.jpg'},
+    {id:'p2',name:'4Zeus - Branding',cat:'brand',catLabel:'Branding',shape:'tall',img:'free-modern-business-card-optimized.jpg'},
+    {id:'p3',name:'Bar Vecia Padova - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'free-wooden-storefront-optimized.jpg'},
+    {id:'p4',name:'Natura Viva - Editoriale',cat:'editorial',catLabel:'Editoriale',shape:'',img:'mockup_succhi_1_supermercato-optimized.jpg'},
     {id:'p5',name:'Eden Studio - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'Untitled design.png'},
-    {id:'p6',name:"L'Abete - Manuale del brand",cat:'brand',catLabel:'Branding',shape:'',img:'manuale del brand.png'}
+    {id:'p6',name:"L'Abete - Manuale del brand",cat:'brand',catLabel:'Branding',shape:'',img:'manuale-del-brand-optimized.jpg'}
   ],
   // design
   theme:'lime',
@@ -929,6 +929,7 @@ const DEF={
 
 let D=JSON.parse(JSON.stringify(DEF));
 let isAdmin=false;
+let portfolioRendered=false;
 
 /* ─── STORAGE ─── */
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k);return r?r.value:null;}}catch(e){}return sessionStorage.getItem(k);}
@@ -955,6 +956,7 @@ function showPage(id){
   const nv=document.getElementById('nav-'+id);if(nv)nv.classList.add('active');
   syncMobileNavLabel(id);
   closeMobileNav();
+  if(id==='portfolio' && !portfolioRendered){renderGrid(D.projects);portfolioRendered=true;}
   if(id==='home')animateCounters();
   window.scrollTo(0,0);return false;
 }
@@ -1042,7 +1044,12 @@ function applyData(d){
   document.getElementById('navStatusTxt').textContent=d.navStatus||DEF.navStatus;
   document.getElementById('aboutBioEl').innerHTML=d.aboutBio.replace(/\n\n/g,'<br><br>').replace('graphic designer e logo designer','<em>graphic designer e logo designer</em>');
   document.getElementById('skillsDisplay').innerHTML=d.skills.map(s=>`<span class="skill-chip">${s}</span>`).join('');
-  renderGrid(d.projects);
+  if(document.getElementById('portfolio').classList.contains('active') || portfolioRendered){
+    renderGrid(d.projects);
+    portfolioRendered=true;
+  }else{
+    portfolioRendered=false;
+  }
   // about img
   if(d.aboutImg){document.getElementById('aboutSvg').style.display='none';const im=document.getElementById('aboutImgEl');im.src=d.aboutImg;im.style.display='block';}
   else{document.getElementById('aboutSvg').style.display='block';document.getElementById('aboutImgEl').style.display='none';}
@@ -1063,7 +1070,7 @@ function renderGrid(projects){
   const g=document.getElementById('projectGrid');
   g.innerHTML=projects.map(p=>{
     const cls='proj-card'+(p.shape?' '+p.shape:'');
-    const thumb=p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy"/>`:(SVG_P[p.id]||'');
+    const thumb=p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" fetchpriority="low"/>`:(SVG_P[p.id]||'');
     return`<div class="${cls}" data-cat="${p.cat}">
       <div class="proj-thumb">${thumb}<div class="proj-overlay"><div class="proj-overlay-arrow">↗</div><div class="proj-overlay-cat">${p.catLabel||catL(p.cat)}</div><div class="proj-overlay-name">${p.name}</div></div></div>
       <div class="proj-label"><div class="proj-name">${p.name}</div><div class="proj-cat-tag">${p.catLabel||catL(p.cat)}</div></div>
@@ -1351,4 +1358,3 @@ init();
 </script>
 </body>
 </html>
-
