@@ -64,6 +64,8 @@ body::before{content:'';position:fixed;inset:0;z-index:9001;pointer-events:none;
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px;background:rgba(6,7,10,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:var(--font-ui);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);text-decoration:none;cursor:none;display:flex;align-items:center;gap:10px;}
 .nav-logo::before{content:'';display:block;width:8px;height:8px;background:var(--accent);clip-path:polygon(50% 0%,100% 100%,0% 100%);}
+.nav-mobile-toggle{display:none;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border2);color:var(--text);padding:8px 12px;font-family:var(--font-body);font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;}
+.nav-mobile-caret{color:var(--accent);font-size:12px;line-height:1;}
 .nav-links{display:flex;gap:6px;list-style:none;}
 .nav-links a{font-family:var(--font-body);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;cursor:none;padding:6px 14px;border:1px solid transparent;transition:color .25s,border-color .25s,background .25s;}
 .nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--accent);background:rgba(255,0,255,.05);}
@@ -391,10 +393,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   #adminPanel{width:100%;}
 }
 @media(max-width:600px){
-  nav{height:auto;min-height:64px;align-items:flex-start;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;}
+  nav{height:auto;min-height:64px;align-items:center;flex-wrap:nowrap;padding-top:10px;padding-bottom:10px;position:fixed;}
   .nav-logo{font-size:12px;}
-  .nav-links{width:100%;justify-content:flex-start;gap:2px;padding-top:4px;}
-  .nav-links a{padding:7px 10px;font-size:10px;}
+  .nav-mobile-toggle{display:inline-flex;margin-left:auto;}
+  .nav-links{display:none;position:absolute;left:0;right:0;top:100%;padding:8px 12px;background:rgba(6,7,10,.98);border-top:1px solid var(--border);flex-direction:column;gap:2px;}
+  .nav-links.open{display:flex;}
+  .nav-links li{width:100%;}
+  .nav-links a{padding:10px 12px;font-size:10px;display:flex;width:100%;border:1px solid var(--border);}
 
   .home-hero{padding:44px 18px 34px;}
   .hero-meta{font-size:9px;letter-spacing:.2em;gap:10px;}
@@ -690,7 +695,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 <!-- ══════════════════════════ NAV ══════════════════════════ -->
 <nav>
   <a class="nav-logo" href="#" onclick="showPage('home')">veronicabaccarin</a>
-  <ul class="nav-links">
+  <button class="nav-mobile-toggle" id="navMobileToggle" aria-expanded="false" onclick="toggleMobileNav()">
+    <span id="navMobileLabel">Home</span><span class="nav-mobile-caret">▾</span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
     <li><a href="#" onclick="showPage('about')" id="nav-about">About</a></li>
     <li><a href="#" onclick="showPage('portfolio')" id="nav-portfolio">Portfolio</a></li>
@@ -945,10 +953,34 @@ function showPage(id){
   t.classList.add('active','fade-in');
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   const nv=document.getElementById('nav-'+id);if(nv)nv.classList.add('active');
+  syncMobileNavLabel(id);
+  closeMobileNav();
   if(id==='home')animateCounters();
   window.scrollTo(0,0);return false;
 }
+function toggleMobileNav(){
+  if(window.innerWidth>600)return;
+  const nav=document.getElementById('navLinks');
+  const btn=document.getElementById('navMobileToggle');
+  if(!nav||!btn)return;
+  const isOpen=nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded',isOpen?'true':'false');
+}
+function closeMobileNav(){
+  const nav=document.getElementById('navLinks');
+  const btn=document.getElementById('navMobileToggle');
+  if(!nav||!btn)return;
+  nav.classList.remove('open');
+  btn.setAttribute('aria-expanded','false');
+}
+function syncMobileNavLabel(id){
+  const label=document.getElementById('navMobileLabel');
+  if(!label)return;
+  const labels={home:'Home',about:'About',portfolio:'Portfolio',contact:'Contatti'};
+  label.textContent=labels[id]||'Menu';
+}
 document.querySelectorAll('[onclick]').forEach(el=>el.addEventListener('click',e=>e.preventDefault()));
+window.addEventListener('resize',()=>{if(window.innerWidth>600)closeMobileNav();});
 
 function filterProj(cat,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
@@ -1285,9 +1317,6 @@ init();
 </script>
 </body>
 </html>
-
-
-
 
 
 
