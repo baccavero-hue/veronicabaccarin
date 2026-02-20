@@ -65,7 +65,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9001;pointer-events:none;
 /* ══ NAV ══ */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px;background:rgba(6,7,10,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:var(--font-ui);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);text-decoration:none;cursor:none;display:flex;align-items:center;gap:10px;}
-.nav-logo::before{content:'';display:block;width:8px;height:8px;background:var(--accent);clip-path:polygon(50% 0%,100% 100%,0% 100%);}
+.nav-logo-icon{width:18px;height:18px;object-fit:contain;display:block;}
 .nav-mobile-toggle{display:none;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border2);color:var(--text);padding:8px 12px;font-family:var(--font-body);font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;}
 .nav-mobile-caret{color:var(--accent);font-size:12px;line-height:1;}
 .nav-links{display:flex;gap:6px;list-style:none;}
@@ -118,6 +118,8 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .cta-secondary{font-family:var(--font-body);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;cursor:none;border-bottom:1px solid var(--border2);padding-bottom:4px;transition:color .25s,border-color .25s;}
 .cta-secondary:hover{color:var(--text);border-color:var(--muted);}
 .hero-right{padding:40px 0 40px 52px;display:flex;flex-direction:column;justify-content:center;}
+.hero-right-logo-wrap{padding:4px 0 22px;border-bottom:1px solid var(--border);margin-bottom:8px;display:flex;justify-content:center;}
+.hero-right-logo{width:clamp(180px,22vw,300px);height:auto;display:block;object-fit:contain;}
 .stat-block{padding:26px 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:6px;}
 .stat-block:first-child{border-top:1px solid var(--border);}
 .stat-num{font-family:var(--font-display);font-size:64px;line-height:1;color:var(--accent);letter-spacing:.02em;}
@@ -372,6 +374,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .home-hero{grid-template-columns:1fr;gap:40px;padding:60px 24px;}
   .home-hero::after{display:none;}
   .hero-right{padding:0;border-top:1px solid var(--border);padding-top:40px;}
+  .hero-right-logo{width:clamp(130px,32vw,220px);}
   .hero-desc{font-size:16px;}
 
   .about-grid{grid-template-columns:1fr;}
@@ -397,6 +400,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 @media(max-width:600px){
   nav{height:auto;min-height:64px;align-items:center;flex-wrap:nowrap;padding-top:10px;padding-bottom:10px;position:fixed;}
   .nav-logo{font-size:12px;}
+  .nav-logo-icon{width:16px;height:16px;}
   .nav-mobile-toggle{display:inline-flex;margin-left:auto;}
   .nav-links{display:none;position:absolute;left:0;right:0;top:100%;padding:8px 12px;background:rgba(6,7,10,.98);border-top:1px solid var(--border);flex-direction:column;gap:2px;}
   .nav-links.open{display:flex;}
@@ -406,6 +410,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .home-hero{padding:44px 18px 34px;}
   .hero-meta{font-size:9px;letter-spacing:.2em;gap:10px;}
   .hero-name{font-size:56px;}
+  .hero-right-logo-wrap{padding:0 0 12px;margin-bottom:4px;}
+  .hero-right-logo{width:116px;}
   .hero-role{font-size:10px;margin-top:16px;margin-bottom:24px;}
   .hero-desc{font-size:14px;line-height:1.65;margin-bottom:30px;}
   .hero-cta-row{gap:12px;flex-wrap:wrap;}
@@ -423,6 +429,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 @media(max-width:380px){
   .hero-name{font-size:48px;}
   .nav-links a{padding:6px 8px;font-size:9px;}
+  .hero-right-logo{width:92px;}
 }
 </style>
 </head>
@@ -696,7 +703,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
 <!-- ══════════════════════════ NAV ══════════════════════════ -->
 <nav>
-  <a class="nav-logo" href="#" onclick="showPage('home')">veronicabaccarin</a>
+  <a class="nav-logo" href="#" onclick="showPage('home')"><img class="nav-logo-icon" src="favicon-32x32.png" alt="Logo"/>veronicabaccarin</a>
   <button class="nav-mobile-toggle" id="navMobileToggle" aria-expanded="false" onclick="toggleMobileNav()">
     <span id="navMobileLabel">Home</span><span class="nav-mobile-caret">▾</span>
   </button>
@@ -723,6 +730,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
     </div>
     <div class="hero-right">
+      <div class="hero-right-logo-wrap"><img class="hero-right-logo" src="favicon-192x192.png" alt="Logo"/></div>
       <div class="stat-block">
         <div class="stat-num" data-key="stat1">4+</div>
         <div class="stat-label">Anni di esperienza</div>
