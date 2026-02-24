@@ -245,9 +245,13 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .cf-submit:hover{background:var(--accent-hover);}
 
 /* footer */
-footer{border-top:1px solid var(--border);padding:24px 52px;display:flex;justify-content:space-between;align-items:center;}
+.site-footer{border-top:1px solid var(--border);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(6,7,10,.88);margin:6px auto max(16px,env(safe-area-inset-bottom));width:min(1200px,100%);}
+body.has-policy-banner .site-footer{margin-bottom:max(124px,env(safe-area-inset-bottom));}
 .foot-copy,.foot-made{font-family:var(--font-body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
 .foot-made em{color:var(--accent);font-style:normal;}
+.foot-links{display:flex;gap:12px;flex-wrap:wrap;}
+.foot-link{font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(183,255,0,.35);padding:6px 8px;background:rgba(183,255,0,.05);}
+.foot-link:hover{background:rgba(183,255,0,.12);border-color:var(--accent);}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px;box-shadow:0 0 0 2px rgba(6,7,10,.9);}
 
 /* ----------------------------------------------
@@ -414,6 +418,18 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .cookie-banner.open{display:block;}
 .cookie-text{font-family:var(--font-ui);font-size:13px;line-height:1.6;color:#c3c8d9;margin:0 0 10px;}
 .cookie-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.legal-link{color:var(--accent);text-decoration:underline;}
+.legal-modal{position:fixed;inset:0;background:rgba(4,6,10,.92);z-index:22000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow:auto;}
+.legal-modal.open{display:flex;}
+.legal-card{width:min(980px,100%);background:var(--surface);border:1px solid var(--border2);padding:18px;}
+.legal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+.legal-title{font-family:var(--font-body);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);}
+.legal-close{border:1px solid var(--border2);background:var(--bg);color:var(--text);width:34px;height:34px;cursor:pointer;font-size:20px;line-height:1;}
+.legal-content{font-family:var(--font-ui);font-size:14px;line-height:1.7;color:#cbd1e0;max-height:74vh;overflow:auto;padding-right:6px;}
+.legal-content h3{font-family:var(--font-body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:14px 0 6px;}
+.legal-content p{margin:0 0 10px;}
+.legal-content ul{margin:0 0 10px 18px;padding:0;}
+.legal-content li{margin:0 0 6px;}
 
 /* Responsive */
 @media(hover:none),(pointer:coarse){
@@ -455,7 +471,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .contact-row{margin:0 -24px;padding-left:24px;padding-right:24px;}
   .contact-headline{font-size:clamp(52px,12vw,88px);}
 
-  footer{padding:20px 24px;flex-direction:column;gap:8px;}
+  .site-footer{padding:16px 18px;flex-direction:column;gap:8px;text-align:center;}
+  .foot-links{justify-content:center;gap:10px;}
   #adminPanel{width:100%;}
 }
 @media(max-width:600px){
@@ -502,10 +519,56 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .proj-img-list{grid-template-columns:1fr;}
   .privacy-banner,.cookie-banner{left:10px;right:10px;bottom:10px;padding:12px;}
   .privacy-text,.cookie-text{font-size:12px;line-height:1.5;}
+  .legal-modal{padding:10px;}
+  .legal-card{padding:12px;}
+  .legal-content{font-size:13px;max-height:76vh;}
   .port-intro,.about-content-col,.contact-left,.contact-right{padding-left:18px;padding-right:18px;}
   .contact-row{margin:0 -18px;padding-left:18px;padding-right:18px;}
   .contact-headline{font-size:46px;}
   .spec-item{padding:14px 16px;}
+}
+@media(max-width:480px){
+  .privacy-banner,.cookie-banner{
+    left:8px;
+    right:8px;
+    bottom:max(8px,env(safe-area-inset-bottom));
+    padding:10px;
+    border-radius:8px;
+  }
+  .privacy-title{font-size:9px;letter-spacing:.15em;margin-bottom:6px;}
+  .privacy-text,.cookie-text{font-size:11px;line-height:1.45;margin-bottom:8px;}
+  .privacy-actions,.cookie-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+  .pb-btn{
+    width:100%;
+    min-height:40px;
+    padding:8px 10px;
+    font-size:8px;
+    letter-spacing:.12em;
+  }
+  .legal-modal{
+    padding:8px;
+    align-items:flex-end;
+  }
+  .legal-card{
+    width:100%;
+    max-height:84vh;
+    border-radius:10px 10px 0 0;
+    padding:10px;
+  }
+  .legal-head{margin-bottom:8px;}
+  .legal-title{font-size:9px;letter-spacing:.14em;}
+  .legal-close{width:36px;height:36px;font-size:22px;}
+  .legal-content{
+    max-height:70vh;
+    font-size:12px;
+    line-height:1.5;
+    padding-right:2px;
+  }
+  .legal-content h3{font-size:9px;letter-spacing:.14em;margin:10px 0 4px;}
+  .site-footer{padding:14px 12px;gap:10px;}
+  .foot-copy,.foot-made{font-size:9px;letter-spacing:.14em;}
+  .foot-links{width:100%;display:grid;grid-template-columns:1fr;gap:8px;}
+  .foot-link{display:block;text-align:center;padding:9px 10px;font-size:9px;}
 }
 @media(max-width:380px){
   .hero-name{font-size:48px;}
@@ -927,26 +990,96 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </form>
     </div>
   </div>
-  <footer>
-    <div class="foot-copy">© 2025 Veronica Baccarin</div>
-    <div class="foot-made">Built with passion — <em>2D Design</em></div>
-  </footer>
 </div>
+
+<footer class="site-footer">
+  <div class="foot-copy">© 2025 Veronica Baccarin</div>
+  <div class="foot-links">
+    <a href="#" class="foot-link" onclick="openTermsModal(event)">Termini e condizioni</a>
+    <a href="#" class="foot-link" onclick="openCookiePolicyModal(event)">Cookie policy</a>
+  </div>
+  <div class="foot-made">Built with passion — <em>2D Design</em></div>
+</footer>
 
 <div id="toast"></div>
 <div id="privacyBanner" class="privacy-banner" role="dialog" aria-live="polite" aria-label="Privacy policy">
   <div class="privacy-title">Privacy Policy</div>
-  <div class="privacy-text">Questo sito mostra portfolio e contatti professionali. I dati inseriti nel form vengono usati solo per rispondere alla richiesta. Continuando dichiari di aver letto l'informativa privacy.</div>
+  <div class="privacy-text">Questo sito mostra portfolio e contatti professionali. I dati inseriti nel form vengono usati solo per rispondere alla richiesta. Continuando dichiari di aver letto l'informativa privacy e i <a href="#" class="legal-link" onclick="openTermsModal(event)">termini e condizioni</a>.</div>
   <div class="privacy-actions">
     <button type="button" class="pb-btn primary" onclick="acceptPrivacyBanner()">Ho letto</button>
     <button type="button" class="pb-btn" onclick="closePrivacyBanner()">Chiudi</button>
   </div>
 </div>
 <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie banner">
-  <p class="cookie-text">Questo sito usa cookie tecnici/local storage per ricordare preferenze e contenuti del portfolio. Puoi accettare tutti i cookie o solo quelli essenziali.</p>
+  <p class="cookie-text">Questo sito usa cookie tecnici/local storage per ricordare preferenze e contenuti del portfolio. Puoi accettare tutti i cookie o solo quelli essenziali. Leggi la <a href="#" class="legal-link" onclick="openCookiePolicyModal(event)">cookie policy</a>.</p>
   <div class="cookie-actions">
     <button type="button" class="pb-btn primary" onclick="acceptAllCookies()">Accetta tutti</button>
     <button type="button" class="pb-btn" onclick="acceptEssentialCookies()">Solo essenziali</button>
+  </div>
+</div>
+<div id="termsModal" class="legal-modal" role="dialog" aria-modal="true" aria-label="Termini e condizioni" onclick="closeTermsModal()">
+  <div class="legal-card" onclick="event.stopPropagation()">
+    <div class="legal-head">
+      <div class="legal-title">Termini e Condizioni</div>
+      <button type="button" class="legal-close" aria-label="Chiudi termini e condizioni" onclick="closeTermsModal()">×</button>
+    </div>
+    <div class="legal-content">
+      <h3>1. Oggetto del sito</h3>
+      <p>Questo sito ha finalità informativa e promozionale e presenta il portfolio professionale di servizi di graphic design, branding, logo design e progettazione editoriale.</p>
+      <h3>2. Proprietà intellettuale</h3>
+      <p>Tutti i contenuti presenti sul sito, inclusi layout, grafiche, loghi, testi, immagini, mockup e progetti, sono protetti da diritto d'autore e rimangono di proprietà dell'autrice o dei rispettivi aventi diritto. È vietata la copia, riproduzione o distribuzione, totale o parziale, senza autorizzazione scritta.</p>
+      <h3>3. Uso consentito</h3>
+      <p>È consentita la consultazione del sito per fini personali e professionali leciti. Non è consentito utilizzare contenuti del portfolio per addestramento, rivendita, pubblicazione su terze piattaforme o uso commerciale non autorizzato.</p>
+      <h3>4. Progetti mostrati</h3>
+      <p>I lavori esposti possono includere concept, varianti, mockup o materiali adattati per presentazione. Le applicazioni reali possono differire per supporti, condizioni di stampa o aggiornamenti richiesti dal cliente.</p>
+      <h3>5. Contatti e richieste</h3>
+      <p>Le richieste inviate tramite form/email non costituiscono automaticamente accettazione d'incarico. Eventuali collaborazioni vengono definite solo dopo accordo esplicito su obiettivi, tempi, costi e condizioni operative.</p>
+      <h3>6. Limitazione di responsabilità</h3>
+      <p>Il sito è fornito "così com'è". Pur con la massima cura, non è garantita l'assenza di errori, interruzioni o incompatibilità tecniche. L'autrice non risponde di danni indiretti derivanti dall'uso del sito o dall'affidamento sui contenuti pubblicati.</p>
+      <h3>7. Link esterni</h3>
+      <p>Il sito può contenere collegamenti a piattaforme esterne (es. social). Tali siti sono gestiti da terzi e soggetti alle loro policy; l'autrice non è responsabile dei loro contenuti o trattamenti dati.</p>
+      <h3>8. Privacy e cookie</h3>
+      <p>L'utilizzo del sito è soggetto all'informativa privacy e alle preferenze cookie mostrate nei banner dedicati.</p>
+      <h3>9. Aggiornamenti</h3>
+      <p>I presenti termini possono essere aggiornati in qualsiasi momento per esigenze tecniche, legali o professionali. La versione pubblicata sul sito è quella vigente.</p>
+      <h3>10. Legge applicabile</h3>
+      <p>I termini sono regolati dalla normativa italiana. Per eventuali controversie è competente il foro previsto dalla legge applicabile.</p>
+    </div>
+  </div>
+</div>
+<div id="cookiePolicyModal" class="legal-modal" role="dialog" aria-modal="true" aria-label="Cookie policy" onclick="closeCookiePolicyModal()">
+  <div class="legal-card" onclick="event.stopPropagation()">
+    <div class="legal-head">
+      <div class="legal-title">Cookie Policy</div>
+      <button type="button" class="legal-close" aria-label="Chiudi cookie policy" onclick="closeCookiePolicyModal()">×</button>
+    </div>
+    <div class="legal-content">
+      <h3>1. Cosa sono i cookie</h3>
+      <p>I cookie sono piccoli file di testo salvati nel browser per migliorare l'esperienza di navigazione. In questo sito vengono usati anche meccanismi equivalenti come il local storage.</p>
+      <h3>2. Cookie usati su questo sito</h3>
+      <ul>
+        <li>Cookie/Storage tecnici: necessari al funzionamento del sito e dell'interfaccia.</li>
+        <li>Cookie/Storage di preferenza: memorizzano scelte utente (es. banner privacy/cookie, contenuti admin salvati localmente).</li>
+      </ul>
+      <p>Al momento non vengono utilizzati cookie di profilazione pubblicitaria di terze parti per tracciamento marketing avanzato.</p>
+      <h3>3. Finalità</h3>
+      <p>I dati salvati servono a mantenere una navigazione coerente, ricordare consensi e preferenze e migliorare usabilità/performance del portfolio.</p>
+      <h3>4. Durata</h3>
+      <p>I cookie/local storage possono rimanere salvati fino alla cancellazione manuale da parte dell'utente o fino a nuove versioni del sito che ne aggiornino le chiavi.</p>
+      <h3>5. Base giuridica</h3>
+      <p>I cookie tecnici sono trattati per legittimo interesse e necessità funzionale del sito; eventuali cookie non essenziali vengono gestiti tramite consenso.</p>
+      <h3>6. Come gestire o revocare il consenso</h3>
+      <p>Puoi in qualsiasi momento:</p>
+      <ul>
+        <li>modificare le preferenze cookie dal banner quando disponibile;</li>
+        <li>cancellare cookie e dati di sito dalle impostazioni del browser;</li>
+        <li>bloccare i cookie direttamente nel browser (alcune funzioni potrebbero non funzionare correttamente).</li>
+      </ul>
+      <h3>7. Titolare del trattamento</h3>
+      <p>Il titolare del trattamento è l'autrice del sito portfolio. Per richieste relative a privacy e cookie puoi usare i contatti presenti nella sezione Contatti.</p>
+      <h3>8. Aggiornamenti della policy</h3>
+      <p>La presente Cookie Policy può essere aggiornata per adeguamenti normativi o tecnici. La versione pubblicata su questa pagina è quella attualmente valida.</p>
+    </div>
   </div>
 </div>
 <div id="projLightbox" class="proj-lightbox" onclick="closeProjLightbox()" aria-hidden="true">
@@ -1386,7 +1519,11 @@ function closeProjLightbox(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeProjLightbox();
+  if(e.key==='Escape'){
+    closeProjLightbox();
+    closeTermsModal();
+    closeCookiePolicyModal();
+  }
   if(e.key==='ArrowRight')stepProjLightbox(1);
   if(e.key==='ArrowLeft')stepProjLightbox(-1);
 });
@@ -1454,49 +1591,112 @@ function toast(msg,type=''){
 }
 
 /* --- PRIVACY & COOKIE BANNERS --- */
-const PRIVACY_SEEN_KEY='vb_privacy_seen_v1';
-const COOKIE_CHOICE_KEY='vb_cookie_choice_v1'; // all | essential
+const PRIVACY_SEEN_KEY='vb_privacy_seen_v2';
+const COOKIE_CHOICE_KEY='vb_cookie_choice_v2'; // all | essential
+function policyGet(k){
+  try{
+    return localStorage.getItem(k);
+  }catch(e){
+    try{return sessionStorage.getItem(k);}catch(_){return null;}
+  }
+}
+function policySet(k,v){
+  try{
+    localStorage.setItem(k,v);
+    return;
+  }catch(e){
+    try{sessionStorage.setItem(k,v);}catch(_){}
+  }
+}
 
 function openPrivacyBanner(){
   const el=document.getElementById('privacyBanner');
   if(el)el.classList.add('open');
+  syncPolicyBannerState();
 }
 function closePrivacyBanner(){
   const el=document.getElementById('privacyBanner');
   if(el)el.classList.remove('open');
+  syncPolicyBannerState();
 }
 function acceptPrivacyBanner(){
-  localStorage.setItem(PRIVACY_SEEN_KEY,'1');
+  policySet(PRIVACY_SEEN_KEY,'1');
   closePrivacyBanner();
   maybeOpenCookieBanner();
 }
 function openCookieBanner(){
   const el=document.getElementById('cookieBanner');
   if(el)el.classList.add('open');
+  syncPolicyBannerState();
 }
 function closeCookieBanner(){
   const el=document.getElementById('cookieBanner');
   if(el)el.classList.remove('open');
+  syncPolicyBannerState();
 }
 function acceptAllCookies(){
-  localStorage.setItem(COOKIE_CHOICE_KEY,'all');
+  policySet(COOKIE_CHOICE_KEY,'all');
   closeCookieBanner();
 }
 function acceptEssentialCookies(){
-  localStorage.setItem(COOKIE_CHOICE_KEY,'essential');
+  policySet(COOKIE_CHOICE_KEY,'essential');
   closeCookieBanner();
 }
 function maybeOpenCookieBanner(){
-  if(localStorage.getItem(COOKIE_CHOICE_KEY))return;
+  if(policyGet(COOKIE_CHOICE_KEY))return;
   openCookieBanner();
 }
 function initPolicyBanners(){
-  const seenPrivacy=localStorage.getItem(PRIVACY_SEEN_KEY)==='1';
+  const seenPrivacy=policyGet(PRIVACY_SEEN_KEY)==='1';
   if(!seenPrivacy){
     openPrivacyBanner();
+    syncPolicyBannerState();
     return;
   }
   maybeOpenCookieBanner();
+  syncPolicyBannerState();
+}
+function syncPolicyBannerState(){
+  const p=document.getElementById('privacyBanner');
+  const c=document.getElementById('cookieBanner');
+  const hasOpen=(p&&p.classList.contains('open'))||(c&&c.classList.contains('open'));
+  document.body.classList.toggle('has-policy-banner',!!hasOpen);
+}
+function openTermsModal(e){
+  if(e)e.preventDefault();
+  const m=document.getElementById('termsModal');
+  if(!m)return;
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeTermsModal(){
+  const m=document.getElementById('termsModal');
+  if(!m)return;
+  m.classList.remove('open');
+  if(
+    !document.getElementById('projLightbox')?.classList.contains('open') &&
+    !document.getElementById('cookiePolicyModal')?.classList.contains('open')
+  ){
+    document.body.style.overflow='';
+  }
+}
+function openCookiePolicyModal(e){
+  if(e)e.preventDefault();
+  const m=document.getElementById('cookiePolicyModal');
+  if(!m)return;
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCookiePolicyModal(){
+  const m=document.getElementById('cookiePolicyModal');
+  if(!m)return;
+  m.classList.remove('open');
+  if(
+    !document.getElementById('projLightbox')?.classList.contains('open') &&
+    !document.getElementById('termsModal')?.classList.contains('open')
+  ){
+    document.body.style.overflow='';
+  }
 }
 
 /* --- LOGIN --- */
