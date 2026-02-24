@@ -156,7 +156,8 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 
 /* ══ PORTFOLIO ══ */
 #portfolio{padding:64px 0 80px;}
-.filter-strip{display:flex;overflow-x:auto;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.filter-strip{display:flex;overflow-x:auto;border-top:1px solid var(--border);border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.filter-strip::-webkit-scrollbar{display:none;}
 .filter-btn{font-family:var(--font-body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:14px 28px;background:none;border:none;border-right:1px solid var(--border);color:var(--muted);cursor:none;transition:color .25s,background .25s;white-space:nowrap;}
 .filter-btn:hover{color:var(--text);background:var(--surface);}
 .filter-btn.active{color:var(--accent);background:rgba(255,0,255,.04);}
@@ -165,6 +166,7 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .proj-card{position:relative;overflow:hidden;cursor:none;background:var(--surface);transition:transform .4s;}
 .proj-card.wide{grid-column:span 2;}
 .proj-card.tall{grid-row:span 2;}
+.proj-card.is-hidden{display:none !important;}
 .proj-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--bg);}
 .proj-card.wide .proj-thumb{aspect-ratio:16/7;}
 .proj-card.tall .proj-thumb{aspect-ratio:3/4;}
@@ -175,10 +177,15 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .proj-overlay-cat{font-family:var(--font-body);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
 .proj-overlay-name{font-family:var(--font-ui);font-size:16px;font-weight:700;color:var(--text);}
 .proj-overlay-arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px;opacity:0;transition:opacity .4s .1s;}
+.proj-overlay-arrow{background:transparent;padding:0;cursor:none;}
 .proj-card:hover .proj-overlay-arrow{opacity:1;}
 .proj-label{padding:14px 20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .proj-name{font-family:var(--font-ui);font-size:13px;font-weight:700;color:var(--text);}
 .proj-cat-tag{font-family:var(--font-body);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);padding:3px 8px;border:1px solid rgba(255,0,255,.3);}
+.proj-lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(4,6,10,.92);z-index:1200;}
+.proj-lightbox.open{display:flex;}
+.proj-lightbox-img{display:block;max-width:min(96vw,1600px);max-height:90vh;width:auto;height:auto;object-fit:contain;border:1px solid var(--border2);background:#000;}
+.proj-lightbox-close{position:absolute;top:16px;right:18px;width:40px;height:40px;border:1px solid var(--accent);background:rgba(6,7,10,.85);color:var(--accent);font-size:28px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:none;}
 
 /* ══ CONTACT ══ */
 #contact{padding:64px 0 80px;}
@@ -363,6 +370,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   body{cursor:auto;}
   .cursor,.cursor-ring{display:none !important;}
   #adminTrigger{opacity:.85;}
+  .nav-logo,.nav-links a,.filter-btn,.proj-card,.proj-overlay-arrow,.proj-lightbox-close,.contact-row,.cta-primary,.cta-secondary{cursor:pointer;}
+  .proj-overlay{transform:translateY(0);opacity:1;padding:16px;background:linear-gradient(to top,rgba(6,7,10,.9) 0%,rgba(6,7,10,.2) 65%,transparent 100%);}
+  .proj-overlay-arrow{opacity:1;top:12px;right:12px;width:44px;height:44px;background:rgba(6,7,10,.82);}
+  .proj-overlay-name{font-size:14px;}
 }
 @media(max-width:960px){
   nav{padding:0 24px;gap:8px;}
@@ -421,6 +432,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .section-num{font-size:56px;}
   .portfolio-grid{grid-template-columns:1fr;}
   .proj-card.tall{grid-row:span 1;}
+  .filter-btn{min-height:44px;padding:12px 18px;}
+  .proj-overlay{padding:14px;}
+  .proj-overlay-cat{font-size:8px;}
+  .proj-overlay-name{font-size:13px;}
+  .proj-lightbox{padding:10px;}
+  .proj-lightbox-img{max-width:100%;max-height:84vh;}
+  .proj-lightbox-close{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));width:44px;height:44px;}
   .port-intro,.about-content-col,.contact-left,.contact-right{padding-left:18px;padding-right:18px;}
   .contact-row{margin:0 -18px;padding-left:18px;padding-right:18px;}
   .contact-headline{font-size:46px;}
@@ -852,6 +870,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 </div>
 
 <div id="toast"></div>
+<div id="projLightbox" class="proj-lightbox" onclick="closeProjLightbox()" aria-hidden="true">
+  <button type="button" class="proj-lightbox-close" aria-label="Chiudi anteprima" onclick="event.stopPropagation();closeProjLightbox()">×</button>
+  <img id="projLightboxImg" class="proj-lightbox-img" alt="Anteprima progetto" onclick="event.stopPropagation()"/>
+</div>
 
 <!-- ══════════════════════════════════════════════════════════
      JAVASCRIPT
@@ -883,7 +905,8 @@ const SVG_P={
   p3:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#06070a"/><rect x="20" y="20" width="160" height="245" fill="#0d0f14" stroke="#ff00ff" stroke-width="1" opacity=".3"/><rect x="200" y="20" width="160" height="118" fill="#ff00ff" opacity=".1"/><rect x="200" y="148" width="76" height="117" fill="#3af0ff" opacity=".08"/><rect x="284" y="148" width="76" height="117" fill="#ff00ff" opacity=".06"/><text x="36" y="135" font-family="serif" font-size="42" fill="#eef0f5" opacity=".9">Aria</text><text x="36" y="158" font-family="monospace" font-size="8" fill="#ff00ff" opacity=".7" letter-spacing="4">MAGAZINE</text></svg>`,
   p4:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#060d08"/><circle cx="190" cy="142" r="100" stroke="#ff00ff" stroke-width="1" fill="none" opacity=".3"/><circle cx="190" cy="142" r="70" stroke="#ff00ff" stroke-width=".5" fill="none" opacity=".2"/><text x="190" y="130" text-anchor="middle" font-family="serif" font-size="30" font-weight="300" fill="#ff00ff">Terra</text><text x="190" y="152" text-anchor="middle" font-family="serif" font-size="15" font-style="italic" fill="#ff00ff" opacity=".6">bistrot</text><text x="190" y="172" text-anchor="middle" font-family="monospace" font-size="7" fill="#4a5268" letter-spacing="6">EST. 2022</text></svg>`,
   p5:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#08090c"/><line x1="190" y1="270" x2="190" y2="50" stroke="#3af0ff" stroke-width="2"/><path d="M 190 190 Q 140 165 128 125 Q 158 140 190 168 Z" fill="#ff00ff" opacity=".7"/><path d="M 190 190 Q 242 165 252 125 Q 222 140 190 168 Z" fill="#ff00ff" opacity=".5"/><circle cx="190" cy="48" r="24" fill="#ff00ff" opacity=".6"/><circle cx="190" cy="48" r="10" fill="#06070a"/></svg>`,
-  p6:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><line x1="0" y1="0" x2="0" y2="285" stroke="#ff00ff" stroke-width="3"/><line x1="380" y1="0" x2="380" y2="285" stroke="#ff00ff" stroke-width="3"/><polygon points="190,50 248,128 190,206 132,128" stroke="#eef0f5" stroke-width="1.5" fill="none" opacity=".6"/><circle cx="190" cy="130" r="26" fill="#ff00ff" opacity=".1" stroke="#ff00ff" stroke-width="1"/><text x="190" y="134" text-anchor="middle" font-family="monospace" font-size="13" fill="#ff00ff">LUX</text></svg>`
+  p6:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><line x1="0" y1="0" x2="0" y2="285" stroke="#ff00ff" stroke-width="3"/><line x1="380" y1="0" x2="380" y2="285" stroke="#ff00ff" stroke-width="3"/><polygon points="190,50 248,128 190,206 132,128" stroke="#eef0f5" stroke-width="1.5" fill="none" opacity=".6"/><circle cx="190" cy="130" r="26" fill="#ff00ff" opacity=".1" stroke="#ff00ff" stroke-width="1"/><text x="190" y="134" text-anchor="middle" font-family="monospace" font-size="13" fill="#ff00ff">LUX</text></svg>`,
+  p7:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><rect x="28" y="28" width="324" height="229" stroke="#4a5268" stroke-dasharray="8 8" fill="none"/><line x1="190" y1="104" x2="190" y2="182" stroke="#ff00ff" stroke-width="2"/><line x1="151" y1="143" x2="229" y2="143" stroke="#ff00ff" stroke-width="2"/><text x="190" y="210" text-anchor="middle" font-family="monospace" font-size="11" fill="#9aa0b8" letter-spacing="2">NUOVO LAVORO</text></svg>`
 };
 
 /* ─── THEME PRESETS ─── */
@@ -926,7 +949,8 @@ const DEF={
     {id:'p3',name:'Bar Vecia Padova - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'free-wooden-storefront-optimized.jpg'},
     {id:'p4',name:'Natura Viva - Editoriale',cat:'editorial',catLabel:'Editoriale',shape:'',img:'mockup_succhi_1_supermercato-optimized.jpg'},
     {id:'p5',name:'Eden Studio - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'chatgpt-image-24-feb-2026-09_58_09-optimized.jpg'},
-    {id:'p6',name:"L'Abete - Manuale del brand",cat:'brand',catLabel:'Branding',shape:'',img:'chatgpt-image-24-feb-2026-09_50_11-optimized.jpg'}
+    {id:'p6',name:"L'Abete - Manuale del brand",cat:'brand',catLabel:'Branding',shape:'',img:'chatgpt-image-24-feb-2026-09_50_11-optimized.jpg'},
+    {id:'p7',name:'Nuovo Progetto',cat:'brand',catLabel:'Branding',shape:'',img:null}
   ],
   // design
   theme:'lime',
@@ -995,8 +1019,13 @@ document.querySelectorAll('[onclick]').forEach(el=>el.addEventListener('click',e
 window.addEventListener('resize',()=>{if(window.innerWidth>600)closeMobileNav();});
 
 function filterProj(cat,btn){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.querySelectorAll('.proj-card').forEach(c=>{const m=cat==='all'||c.dataset.cat===cat;c.style.opacity=m?'1':'0.12';c.style.pointerEvents=m?'auto':'none';});
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(c=>{
+    const show=cat==='all'||c.dataset.cat===cat;
+    c.classList.toggle('is-hidden',!show);
+    c.setAttribute('aria-hidden',show?'false':'true');
+  });
 }
 function cfSubmit(e){
   e.preventDefault();
@@ -1081,12 +1110,107 @@ function renderGrid(projects){
   g.innerHTML=projects.map(p=>{
     const cls='proj-card'+(p.shape?' '+p.shape:'');
     const thumb=p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" fetchpriority="low"/>`:(SVG_P[p.id]||'');
+    const clickData=p.img?` data-fullimg="${encodeURIComponent(p.img)}" data-alt="${encodeURIComponent(p.name)}"`:'';
+    const arrow=p.img?`<button class="proj-overlay-arrow" type="button" aria-label="Apri immagine ${p.name}" data-fullimg="${encodeURIComponent(p.img)}" data-alt="${encodeURIComponent(p.name)}">↗</button>`:'';
     return`<div class="${cls}" data-cat="${p.cat}">
-      <div class="proj-thumb">${thumb}<div class="proj-overlay"><div class="proj-overlay-arrow">↗</div><div class="proj-overlay-cat">${p.catLabel||catL(p.cat)}</div><div class="proj-overlay-name">${p.name}</div></div></div>
+      <div class="proj-thumb"${clickData}>${thumb}<div class="proj-overlay">${arrow}<div class="proj-overlay-cat">${p.catLabel||catL(p.cat)}</div><div class="proj-overlay-name">${p.name}</div></div></div>
       <div class="proj-label"><div class="proj-name">${p.name}</div><div class="proj-cat-tag">${p.catLabel||catL(p.cat)}</div></div>
     </div>`;
   }).join('');
+  document.querySelectorAll('.proj-overlay-arrow').forEach(btn=>{
+    if(btn.dataset.bound==='1')return;
+    btn.dataset.bound='1';
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      openProjLightbox(decodeURIComponent(btn.dataset.fullimg||''),decodeURIComponent(btn.dataset.alt||''));
+    });
+  });
+  document.querySelectorAll('.proj-thumb[data-fullimg]').forEach(el=>{
+    if(el.dataset.bound==='1')return;
+    el.dataset.bound='1';
+    el.addEventListener('click',e=>{
+      if(e.target.closest('.proj-overlay-arrow'))return;
+      openProjLightbox(decodeURIComponent(el.dataset.fullimg||''),decodeURIComponent(el.dataset.alt||''));
+    });
+  });
   rebind();
+}
+
+let lbItems=[];
+let lbIndex=-1;
+let lbTouchStartX=0;
+let lbTouchStartY=0;
+
+function collectLightboxItems(){
+  return [...document.querySelectorAll('.proj-thumb[data-fullimg]')].map(el=>({
+    src:decodeURIComponent(el.dataset.fullimg||''),
+    alt:decodeURIComponent(el.dataset.alt||'')
+  })).filter(it=>it.src);
+}
+
+function showProjLightboxIndex(idx){
+  if(!lbItems.length)return;
+  lbIndex=(idx+lbItems.length)%lbItems.length;
+  const it=lbItems[lbIndex];
+  const img=document.getElementById('projLightboxImg');
+  if(!img)return;
+  img.src=it.src;
+  img.alt=it.alt||'Anteprima progetto';
+}
+
+function openProjLightbox(src,alt=''){
+  if(!src)return;
+  const lb=document.getElementById('projLightbox');
+  if(!lb)return;
+  lbItems=collectLightboxItems();
+  const found=lbItems.findIndex(it=>it.src===src);
+  if(found>=0){
+    showProjLightboxIndex(found);
+  }else{
+    lbItems=[{src,alt}];
+    showProjLightboxIndex(0);
+  }
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function stepProjLightbox(step){
+  const lb=document.getElementById('projLightbox');
+  if(!lb||!lb.classList.contains('open')||!lbItems.length)return;
+  showProjLightboxIndex(lbIndex+step);
+}
+function closeProjLightbox(){
+  const lb=document.getElementById('projLightbox');
+  const img=document.getElementById('projLightboxImg');
+  if(!lb||!img)return;
+  lb.classList.remove('open');
+  img.removeAttribute('src');
+  lbItems=[];
+  lbIndex=-1;
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeProjLightbox();
+  if(e.key==='ArrowRight')stepProjLightbox(1);
+  if(e.key==='ArrowLeft')stepProjLightbox(-1);
+});
+const projLightboxEl=document.getElementById('projLightbox');
+if(projLightboxEl){
+  projLightboxEl.addEventListener('touchstart',e=>{
+    const t=e.changedTouches&&e.changedTouches[0];
+    if(!t)return;
+    lbTouchStartX=t.clientX;
+    lbTouchStartY=t.clientY;
+  },{passive:true});
+  projLightboxEl.addEventListener('touchend',e=>{
+    const t=e.changedTouches&&e.changedTouches[0];
+    if(!t)return;
+    const dx=t.clientX-lbTouchStartX;
+    const dy=t.clientY-lbTouchStartY;
+    if(Math.abs(dx)<50 || Math.abs(dx)<Math.abs(dy))return;
+    if(dx<0)stepProjLightbox(1);
+    else stepProjLightbox(-1);
+  },{passive:true});
 }
 
 /* ─── DESIGN ENGINE ─── */
