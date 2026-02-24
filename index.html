@@ -402,6 +402,19 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 #toast.ok{border-color:var(--success);color:var(--success);}
 
+/* Privacy + Cookie banners */
+.privacy-banner{position:fixed;inset:auto 16px 16px 16px;background:rgba(6,7,10,.97);border:1px solid var(--border2);padding:14px;z-index:21000;display:none;max-width:680px;margin:0 auto;left:0;right:0;}
+.privacy-banner.open{display:block;}
+.privacy-title{font-family:var(--font-body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.privacy-text{font-family:var(--font-ui);font-size:13px;line-height:1.6;color:#c3c8d9;margin-bottom:10px;}
+.privacy-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.pb-btn{border:1px solid var(--border2);background:var(--surface);color:var(--text);padding:8px 12px;font-family:var(--font-body);font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;}
+.pb-btn.primary{border-color:var(--accent);color:var(--accent);}
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;background:rgba(6,7,10,.98);border:1px solid var(--border2);padding:14px;z-index:20999;display:none;}
+.cookie-banner.open{display:block;}
+.cookie-text{font-family:var(--font-ui);font-size:13px;line-height:1.6;color:#c3c8d9;margin:0 0 10px;}
+.cookie-actions{display:flex;gap:8px;flex-wrap:wrap;}
+
 /* Responsive */
 @media(hover:none),(pointer:coarse){
   body{cursor:auto;}
@@ -487,6 +500,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .proj-label{padding:12px 14px;gap:10px;}
   .proj-desc{font-size:11px;-webkit-line-clamp:4;line-clamp:4;}
   .proj-img-list{grid-template-columns:1fr;}
+  .privacy-banner,.cookie-banner{left:10px;right:10px;bottom:10px;padding:12px;}
+  .privacy-text,.cookie-text{font-size:12px;line-height:1.5;}
   .port-intro,.about-content-col,.contact-left,.contact-right{padding-left:18px;padding-right:18px;}
   .contact-row{margin:0 -18px;padding-left:18px;padding-right:18px;}
   .contact-headline{font-size:46px;}
@@ -919,6 +934,21 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 </div>
 
 <div id="toast"></div>
+<div id="privacyBanner" class="privacy-banner" role="dialog" aria-live="polite" aria-label="Privacy policy">
+  <div class="privacy-title">Privacy Policy</div>
+  <div class="privacy-text">Questo sito mostra portfolio e contatti professionali. I dati inseriti nel form vengono usati solo per rispondere alla richiesta. Continuando dichiari di aver letto l'informativa privacy.</div>
+  <div class="privacy-actions">
+    <button type="button" class="pb-btn primary" onclick="acceptPrivacyBanner()">Ho letto</button>
+    <button type="button" class="pb-btn" onclick="closePrivacyBanner()">Chiudi</button>
+  </div>
+</div>
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie banner">
+  <p class="cookie-text">Questo sito usa cookie tecnici/local storage per ricordare preferenze e contenuti del portfolio. Puoi accettare tutti i cookie o solo quelli essenziali.</p>
+  <div class="cookie-actions">
+    <button type="button" class="pb-btn primary" onclick="acceptAllCookies()">Accetta tutti</button>
+    <button type="button" class="pb-btn" onclick="acceptEssentialCookies()">Solo essenziali</button>
+  </div>
+</div>
 <div id="projLightbox" class="proj-lightbox" onclick="closeProjLightbox()" aria-hidden="true">
   <button type="button" class="proj-lightbox-close" aria-label="Chiudi anteprima" onclick="event.stopPropagation();closeProjLightbox()">×</button>
   <div class="proj-lightbox-stage" onclick="event.stopPropagation()">
@@ -1423,6 +1453,52 @@ function toast(msg,type=''){
   setTimeout(()=>t.className='',2800);
 }
 
+/* --- PRIVACY & COOKIE BANNERS --- */
+const PRIVACY_SEEN_KEY='vb_privacy_seen_v1';
+const COOKIE_CHOICE_KEY='vb_cookie_choice_v1'; // all | essential
+
+function openPrivacyBanner(){
+  const el=document.getElementById('privacyBanner');
+  if(el)el.classList.add('open');
+}
+function closePrivacyBanner(){
+  const el=document.getElementById('privacyBanner');
+  if(el)el.classList.remove('open');
+}
+function acceptPrivacyBanner(){
+  localStorage.setItem(PRIVACY_SEEN_KEY,'1');
+  closePrivacyBanner();
+  maybeOpenCookieBanner();
+}
+function openCookieBanner(){
+  const el=document.getElementById('cookieBanner');
+  if(el)el.classList.add('open');
+}
+function closeCookieBanner(){
+  const el=document.getElementById('cookieBanner');
+  if(el)el.classList.remove('open');
+}
+function acceptAllCookies(){
+  localStorage.setItem(COOKIE_CHOICE_KEY,'all');
+  closeCookieBanner();
+}
+function acceptEssentialCookies(){
+  localStorage.setItem(COOKIE_CHOICE_KEY,'essential');
+  closeCookieBanner();
+}
+function maybeOpenCookieBanner(){
+  if(localStorage.getItem(COOKIE_CHOICE_KEY))return;
+  openCookieBanner();
+}
+function initPolicyBanners(){
+  const seenPrivacy=localStorage.getItem(PRIVACY_SEEN_KEY)==='1';
+  if(!seenPrivacy){
+    openPrivacyBanner();
+    return;
+  }
+  maybeOpenCookieBanner();
+}
+
 /* --- LOGIN --- */
 function openLogin(){if(isAdmin){openAdmin();return;} document.getElementById('loginModal').classList.add('open'); document.getElementById('loginUser').value=''; document.getElementById('loginPass').value=''; document.getElementById('loginErr').style.display='none'; setTimeout(()=>document.getElementById('loginUser').focus(),200);}
 function closeLogin(){document.getElementById('loginModal').classList.remove('open');}
@@ -1688,6 +1764,7 @@ async function init(){
   D.projects=normalizeProjects(D.projects);
   applyData(D);
   showPage('home');
+  initPolicyBanners();
 }
 init();
 </script>
