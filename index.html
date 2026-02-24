@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Veronica Baccarin | Graphic Designer e Logo Designer</title>
-<meta name="description" content="Portfolio di Veronica Baccarin, graphic designer e logo designer: branding, identita visiva, illustrazione 2D e design editoriale."/>
+<meta name="description" content="Portfolio di Veronica Baccarin, graphic designer e logo designer: branding, identità visiva, illustrazione 2D e design editoriale."/>
 <meta name="robots" content="index,follow,max-image-preview:large"/>
 <meta name="author" content="Veronica Baccarin"/>
 <meta name="theme-color" content="#06070a"/>
@@ -16,20 +16,20 @@
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="it_IT"/>
 <meta property="og:title" content="Veronica Baccarin | Graphic Designer e Logo Designer"/>
-<meta property="og:description" content="Portfolio di Veronica Baccarin: branding, logo design, identita visiva e illustrazione 2D."/>
+<meta property="og:description" content="Portfolio di Veronica Baccarin: branding, logo design, identità visiva e illustrazione 2D."/>
 <meta property="og:image" content="favicon-512x512.png"/>
 <meta property="og:url" content="./"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Veronica Baccarin | Graphic Designer e Logo Designer"/>
-<meta name="twitter:description" content="Portfolio di Veronica Baccarin: branding, logo design, identita visiva e illustrazione 2D."/>
+<meta name="twitter:description" content="Portfolio di Veronica Baccarin: branding, logo design, identità visiva e illustrazione 2D."/>
 <meta name="twitter:image" content="favicon-512x512.png"/>
 <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Bebas+Neue&family=Space+Grotesk:wght@300;400;700&family=DM+Sans:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
 <style>
-/* ══ ROOT ══ */
+/* -- ROOT -- */
 :root{
   --bg:#06070a; --surface:#0d0f14; --surface2:#131620;
   --border:#1e2230; --border2:#252a38;
-  --accent:#ff00ff; --accent-hover:#ff66ff;
+  --accent:#b7ff00; --accent-hover:#e5ff66;
   --cyan:#3af0ff;
   --text:#eef0f5; --muted:#4a5268; --muted2:#2a2f3f;
   --danger:#ff4040; --success:#40c860;
@@ -62,7 +62,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9001;pointer-events:none;
 .cursor{position:fixed;width:8px;height:8px;background:var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;}
 .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid var(--accent);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;opacity:.5;}
 
-/* ══ NAV ══ */
+/* -- NAV -- */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px;background:rgba(6,7,10,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:var(--font-ui);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);text-decoration:none;cursor:none;display:flex;align-items:center;gap:10px;}
 .nav-logo-icon{width:18px;height:18px;object-fit:contain;display:block;}
@@ -70,7 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .nav-mobile-caret{color:var(--accent);font-size:12px;line-height:1;}
 .nav-links{display:flex;gap:6px;list-style:none;}
 .nav-links a{font-family:var(--font-body);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;cursor:none;padding:6px 14px;border:1px solid transparent;transition:color .25s,border-color .25s,background .25s;}
-.nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--accent);background:rgba(255,0,255,.05);}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--accent);background:rgba(183,255,0,.05);}
 .nav-status{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
 .status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
@@ -80,20 +80,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 #adminTrigger:hover{opacity:1;border-color:var(--accent);}
 #adminTrigger svg{width:15px;height:15px;fill:var(--muted);}
 
-/* ══ PAGES ══ */
+/* -- PAGES -- */
 .page{min-height:100vh;display:none;opacity:0;position:relative;z-index:1;}
 .page.active{display:block;opacity:1;}
 .page.fade-in{animation:pgIn .55s ease forwards;}
 @keyframes pgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══ MARQUEE ══ */
+/* -- MARQUEE -- */
 .marquee-band{width:100%;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);padding:10px 0;}
 .marquee-track{display:flex;white-space:nowrap;animation:mRun 25s linear infinite;}
 .marquee-track span{font-family:var(--font-body);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);padding:0 36px;}
 .marquee-track span.hl{color:var(--accent);}
 @keyframes mRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ══ HOME ══ */
+/* -- HOME -- */
 #home{display:flex;flex-direction:column;min-height:100vh;padding-top:64px;}
 .home-hero{flex:1;display:grid;grid-template-columns:1fr 380px;align-items:center;gap:0;padding:80px 52px 60px;position:relative;}
 .home-hero::after{content:'';position:absolute;right:380px;top:0;bottom:0;width:1px;background:var(--border);}
@@ -127,7 +127,7 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .stat-bar{height:2px;background:var(--border);margin-top:10px;overflow:hidden;}
 .stat-bar-fill{height:100%;background:var(--accent);width:0;transition:width 1.5s ease;}
 
-/* ══ ABOUT ══ */
+/* -- ABOUT -- */
 #about{padding:64px 0 80px;}
 .section-intro{padding:60px 52px 0;}
 .section-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
@@ -137,7 +137,7 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .about-grid{display:grid;grid-template-columns:380px 1fr;gap:0;border-top:1px solid var(--border);}
 .about-img-col{border-right:1px solid var(--border);position:relative;overflow:hidden;}
 .about-img-frame{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--surface);}
-.about-img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,0,255,.07) 0%,transparent 60%);pointer-events:none;}
+.about-img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(183,255,0,.07) 0%,transparent 60%);pointer-events:none;}
 .about-img-frame img,.about-img-frame svg{width:100%;height:100%;object-fit:cover;display:block;}
 .img-corner{position:absolute;width:24px;height:24px;border-color:var(--accent);border-style:solid;}
 .img-corner.tl{top:12px;left:12px;border-width:2px 0 0 2px;}
@@ -148,28 +148,26 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .about-bio-text em{color:var(--accent);font-style:normal;}
 .skills-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
 .skill-chip{font-family:var(--font-body);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--border2);color:var(--muted);transition:border-color .25s,color .25s,background .25s;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);}
-.skill-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,0,255,.04);}
+.skill-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(183,255,0,.04);}
 .about-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
 .spec-item{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:4px;}
 .spec-key{font-family:var(--font-body);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);}
 .spec-val{font-family:var(--font-ui);font-size:14px;font-weight:700;color:var(--text);}
 
-/* ══ PORTFOLIO ══ */
+/* -- PORTFOLIO -- */
 #portfolio{padding:64px 0 80px;}
 .filter-strip{display:flex;overflow-x:auto;border-top:1px solid var(--border);border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .filter-strip::-webkit-scrollbar{display:none;}
 .filter-btn{font-family:var(--font-body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:14px 28px;background:none;border:none;border-right:1px solid var(--border);color:var(--muted);cursor:none;transition:color .25s,background .25s;white-space:nowrap;}
 .filter-btn:hover{color:var(--text);background:var(--surface);}
-.filter-btn.active{color:var(--accent);background:rgba(255,0,255,.04);}
+.filter-btn.active{color:var(--accent);background:rgba(183,255,0,.04);}
 .port-intro{padding:36px 52px;font-family:var(--font-ui);font-size:16px;color:#9aa0b8;max-width:600px;border-bottom:1px solid var(--border);}
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
 .proj-card{position:relative;overflow:hidden;cursor:none;background:var(--surface);transition:transform .4s;}
-.proj-card.wide{grid-column:span 2;}
-.proj-card.tall{grid-row:span 2;}
+.proj-card.wide,.proj-card.tall{grid-column:span 1;grid-row:span 1;}
 .proj-card.is-hidden{display:none !important;}
 .proj-thumb{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--bg);}
-.proj-card.wide .proj-thumb{aspect-ratio:16/7;}
-.proj-card.tall .proj-thumb{aspect-ratio:3/4;}
+.proj-card.wide .proj-thumb,.proj-card.tall .proj-thumb{aspect-ratio:4/3;}
 .proj-thumb img,.proj-thumb svg{width:100%;height:100%;display:block;object-fit:cover;transition:transform .6s,filter .4s;}
 .proj-card:hover .proj-thumb img,.proj-card:hover .proj-thumb svg{transform:scale(1.05);filter:brightness(.65);}
 .proj-overlay{position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(6,7,10,.9) 0%,transparent 60%);transform:translateY(24px);opacity:0;transition:transform .4s,opacity .4s;}
@@ -181,13 +179,13 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .proj-card:hover .proj-overlay-arrow{opacity:1;}
 .proj-label{padding:14px 20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .proj-name{font-family:var(--font-ui);font-size:13px;font-weight:700;color:var(--text);}
-.proj-cat-tag{font-family:var(--font-body);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);padding:3px 8px;border:1px solid rgba(255,0,255,.3);}
+.proj-cat-tag{font-family:var(--font-body);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);padding:3px 8px;border:1px solid rgba(183,255,0,.3);}
 .proj-lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(4,6,10,.92);z-index:1200;}
 .proj-lightbox.open{display:flex;}
 .proj-lightbox-img{display:block;max-width:min(96vw,1600px);max-height:90vh;width:auto;height:auto;object-fit:contain;border:1px solid var(--border2);background:#000;}
 .proj-lightbox-close{position:absolute;top:16px;right:18px;width:40px;height:40px;border:1px solid var(--accent);background:rgba(6,7,10,.85);color:var(--accent);font-size:28px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:none;}
 
-/* ══ CONTACT ══ */
+/* -- CONTACT -- */
 #contact{padding:64px 0 80px;}
 .contact-layout{display:grid;grid-template-columns:1fr 480px;gap:0;border-top:1px solid var(--border);}
 .contact-left{padding:60px 52px;border-right:1px solid var(--border);}
@@ -196,7 +194,7 @@ body.no-glitch .glitch::before,body.no-glitch .glitch::after{display:none;}
 .contact-sub{font-family:var(--font-ui);font-size:16px;color:#9aa0b8;line-height:1.7;max-width:480px;margin-bottom:52px;}
 .contact-links{display:flex;flex-direction:column;}
 .contact-row{display:flex;align-items:center;padding:18px 0;border-bottom:1px solid var(--border);text-decoration:none;cursor:none;transition:background .25s;margin:0 -52px;padding-left:52px;padding-right:52px;}
-.contact-row:hover{background:rgba(255,0,255,.03);}
+.contact-row:hover{background:rgba(183,255,0,.03);}
 .contact-row-label{font-family:var(--font-body);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);min-width:90px;}
 .contact-row-val{font-family:var(--font-ui);font-size:15px;font-weight:700;color:var(--text);flex:1;transition:color .25s;}
 .contact-row:hover .contact-row-val{color:var(--accent);}
@@ -217,9 +215,9 @@ footer{border-top:1px solid var(--border);padding:24px 52px;display:flex;justify
 .foot-copy,.foot-made{font-family:var(--font-body);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
 .foot-made em{color:var(--accent);font-style:normal;}
 
-/* ══════════════════════════════════════════════
-   ██████ ADMIN SYSTEM ██████
-══════════════════════════════════════════════ */
+/* ----------------------------------------------
+   ¦¦¦¦¦¦ ADMIN SYSTEM ¦¦¦¦¦¦
+---------------------------------------------- */
 /* Login */
 #loginModal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(6,7,10,.96);backdrop-filter:blur(10px);align-items:center;justify-content:center;}
 #loginModal.open{display:flex;animation:pgIn .4s ease;}
@@ -302,7 +300,7 @@ footer{border-top:1px solid var(--border);padding:24px 52px;display:flex;justify
 .pec-det{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
 .pec-det.open{display:block;}
 
-/* ══ ESTETICA TAB ══ */
+/* -- ESTETICA TAB -- */
 /* Color swatch */
 .color-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
 .color-field{display:flex;flex-direction:column;gap:6px;}
@@ -315,8 +313,8 @@ footer{border-top:1px solid var(--border);padding:24px 52px;display:flex;justify
 .font-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
 .font-opt{background:var(--bg);border:1px solid var(--border);padding:14px 12px;cursor:pointer;text-align:center;transition:border-color .25s,background .25s;position:relative;}
 .font-opt:hover{border-color:var(--accent);}
-.font-opt.selected{border-color:var(--accent);background:rgba(255,0,255,.05);}
-.font-opt.selected::after{content:'✓';position:absolute;top:6px;right:8px;font-size:10px;color:var(--accent);}
+.font-opt.selected{border-color:var(--accent);background:rgba(183,255,0,.05);}
+.font-opt.selected::after{content:'?';position:absolute;top:6px;right:8px;font-size:10px;color:var(--accent);}
 .font-opt-name{font-size:18px;margin-bottom:4px;line-height:1.2;}
 .font-opt-label{font-family:var(--font-body);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
 
@@ -396,7 +394,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
   .section-intro{padding:40px 24px 0;}
   .portfolio-grid{grid-template-columns:1fr 1fr;}
-  .proj-card.wide{grid-column:span 1;}
   .port-intro{padding:24px;}
 
   .contact-layout{grid-template-columns:1fr;}
@@ -431,7 +428,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   .section-intro{padding:34px 18px 0;}
   .section-num{font-size:56px;}
   .portfolio-grid{grid-template-columns:1fr;}
-  .proj-card.tall{grid-row:span 1;}
   .filter-btn{min-height:44px;padding:12px 18px;}
   .proj-overlay{padding:14px;}
   .proj-overlay-cat{font-size:8px;}
@@ -460,7 +456,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
 </button>
 
-<!-- ══════════════════════════ LOGIN ══════════════════════════ -->
+<!-- -------------------------- LOGIN -------------------------- -->
 <div id="loginModal">
   <div class="login-box">
     <button class="login-close" onclick="closeLogin()">×</button>
@@ -469,12 +465,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <div class="login-sub">veronica.baccarin · pannello di controllo</div>
 <div class="lf"><label>Username</label><input type="text" id="loginUser" placeholder="veronica" autocomplete="username"/></div>
     <div class="lf"><label>Password</label><input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
-    <button class="login-btn" onclick="doLogin()">→ Accedi</button>
+    <button class="login-btn" onclick="doLogin()">? Accedi</button>
     <div class="login-err" id="loginErr">Credenziali errate. Riprova.</div>
   </div>
 </div>
 
-<!-- ══════════════════════════ ADMIN PANEL ══════════════════════════ -->
+<!-- -------------------------- ADMIN PANEL -------------------------- -->
 <div id="adminPanel">
   <div class="ap-head">
     <div class="ap-head-left"><div class="ap-pulse"></div><div class="ap-title">// pannello admin — v2</div></div>
@@ -483,16 +479,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
   <!-- 5 TABS -->
   <div class="ap-tabs">
-    <button class="ap-tab active" onclick="switchTab('t-home',this)">🏠 Home</button>
-    <button class="ap-tab" onclick="switchTab('t-about',this)">👤 About</button>
-    <button class="ap-tab" onclick="switchTab('t-portfolio',this)">🖼 Portfolio</button>
-    <button class="ap-tab" onclick="switchTab('t-contact',this)">📬 Contatti</button>
-    <button class="ap-tab" onclick="switchTab('t-design',this)">🎨 Estetica</button>
+    <button class="ap-tab active" onclick="switchTab('t-home',this)">?? Home</button>
+    <button class="ap-tab" onclick="switchTab('t-about',this)">?? About</button>
+    <button class="ap-tab" onclick="switchTab('t-portfolio',this)">?? Portfolio</button>
+    <button class="ap-tab" onclick="switchTab('t-contact',this)">?? Contatti</button>
+    <button class="ap-tab" onclick="switchTab('t-design',this)">?? Estetica</button>
   </div>
 
   <div class="ap-body">
 
-    <!-- ── TAB HOME ── -->
+    <!-- -- TAB HOME -- -->
     <div class="ap-pane active" id="t-home">
       <div class="ap-grp">
         <div class="ap-sec">Testi homepage</div>
@@ -503,20 +499,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
     </div>
 
-    <!-- ── TAB ABOUT ── -->
+    <!-- -- TAB ABOUT -- -->
     <div class="ap-pane" id="t-about">
       <div class="ap-grp">
         <div class="ap-sec">Foto profilo</div>
         <div class="ap-f">
           <label>Carica foto (JPG / PNG / WEBP)</label>
           <div class="img-drop" onclick="document.getElementById('abiInp').click()">
-            <div class="img-drop-lbl">📁 clicca per scegliere</div>
+            <div class="img-drop-lbl">?? clicca per scegliere</div>
             <input type="file" id="abiInp" accept="image/*" style="display:none" onchange="handleImg(this,'aboutImg','abiPrev')"/>
             <img id="abiPrev" class="img-prev"/>
           </div>
         </div>
         <div id="abiClearWrap" style="display:none;margin-top:6px;">
-          <button class="ap-dbtn" onclick="clearAboutImg()">🗑 rimuovi foto</button>
+          <button class="ap-dbtn" onclick="clearAboutImg()">?? rimuovi foto</button>
         </div>
       </div>
       <div class="ap-grp">
@@ -539,7 +535,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
     </div>
 
-    <!-- ── TAB PORTFOLIO ── -->
+    <!-- -- TAB PORTFOLIO -- -->
     <div class="ap-pane" id="t-portfolio">
       <div class="ap-grp">
         <div class="ap-sec">Testo introduttivo</div>
@@ -551,7 +547,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
     </div>
 
-    <!-- ── TAB CONTATTI ── -->
+    <!-- -- TAB CONTATTI -- -->
     <div class="ap-pane" id="t-contact">
       <div class="ap-grp">
         <div class="ap-sec">Testo pagina</div>
@@ -565,19 +561,19 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       </div>
     </div>
 
-    <!-- ══ TAB ESTETICA ══ -->
+    <!-- -- TAB ESTETICA -- -->
     <div class="ap-pane" id="t-design">
 
       <!-- PRESET TEMI -->
       <div class="ap-grp">
-        <div class="ap-sec">🎭 Preset temi</div>
+        <div class="ap-sec">?? Preset temi</div>
         <div class="theme-presets" id="themePresets">
           <div class="theme-swatch" onclick="applyTheme('lime')" data-theme="lime">
-            <div class="theme-swatch-bar"><span style="background:#06070a"></span><span style="background:#ff00ff"></span><span style="background:#3af0ff"></span><span style="background:#eef0f5"></span></div>
+            <div class="theme-swatch-bar"><span style="background:#06070a"></span><span style="background:#b7ff00"></span><span style="background:#3af0ff"></span><span style="background:#eef0f5"></span></div>
             <div class="theme-swatch-name">Electric Lime</div>
           </div>
           <div class="theme-swatch" onclick="applyTheme('violet')" data-theme="violet">
-            <div class="theme-swatch-bar"><span style="background:#07060f"></span><span style="background:#9b6dff"></span><span style="background:#ff6db5"></span><span style="background:#f0ecff"></span></div>
+            <div class="theme-swatch-bar"><span style="background:#07060f"></span><span style="background:#b7ff00"></span><span style="background:#ff6db5"></span><span style="background:#f0ecff"></span></div>
             <div class="theme-swatch-name">Neo Violet</div>
           </div>
           <div class="theme-swatch" onclick="applyTheme('coral')" data-theme="coral">
@@ -603,13 +599,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
       <!-- COLORI CUSTOM -->
       <div class="ap-grp">
-        <div class="ap-sec">🎨 Colori personalizzati</div>
+        <div class="ap-sec">?? Colori personalizzati</div>
         <div class="color-row">
           <div class="color-field">
             <label>Colore Accento</label>
             <div class="color-wrap">
               <input type="color" id="c-accent" oninput="liveColor('accent',this.value)"/>
-              <input type="text" id="c-accent-hex" placeholder="#ff00ff" oninput="syncColorFromHex('accent',this.value)"/>
+              <input type="text" id="c-accent-hex" placeholder="#b7ff00" oninput="syncColorFromHex('accent',this.value)"/>
             </div>
           </div>
           <div class="color-field">
@@ -654,7 +650,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
       <!-- TIPOGRAFIA -->
       <div class="ap-grp">
-        <div class="ap-sec">✏️ Tipografia</div>
+        <div class="ap-sec">?? Tipografia</div>
         <div class="ap-f" style="margin-bottom:18px;"><label>Stile font — scegli la combinazione</label></div>
         <div class="font-options" id="fontOptions">
           <div class="font-opt selected" onclick="applyFont('tech',this)" data-font="tech">
@@ -680,7 +676,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 
       <!-- EFFETTI -->
       <div class="ap-grp">
-        <div class="ap-sec">⚡ Effetti visivi</div>
+        <div class="ap-sec">? Effetti visivi</div>
 
         <div class="toggle-row">
           <span class="toggle-label">Griglia di sfondo</span>
@@ -714,16 +710,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   </div><!-- /ap-body -->
 
   <div class="ap-foot">
-    <button class="ap-save" id="apSave" onclick="saveAll()">💾 Salva tutte le modifiche</button>
+    <button class="ap-save" id="apSave" onclick="saveAll()">?? Salva tutte le modifiche</button>
     <button class="ap-out" onclick="logout()">Esci</button>
   </div>
 </div>
 
-<!-- ══════════════════════════ NAV ══════════════════════════ -->
+<!-- -------------------------- NAV -------------------------- -->
 <nav>
   <a class="nav-logo" href="#" onclick="showPage('home')"><img class="nav-logo-icon" src="favicon-32x32.png" alt="Logo"/>veronicabaccarin</a>
   <button class="nav-mobile-toggle" id="navMobileToggle" aria-expanded="false" onclick="toggleMobileNav()">
-    <span id="navMobileLabel">Home</span><span class="nav-mobile-caret">▾</span>
+    <span id="navMobileLabel">Home</span><span class="nav-mobile-caret">?</span>
   </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
@@ -734,7 +730,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   <div class="nav-status"><div class="status-dot"></div><span id="navStatusTxt">Disponibile per progetti</span></div>
 </nav>
 
-<!-- ══════════════════════════ HOME ══════════════════════════ -->
+<!-- -------------------------- HOME -------------------------- -->
 <div id="home" class="page active fade-in" style="padding-top:64px;">
   <div class="home-hero">
     <div class="hero-left">
@@ -743,7 +739,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="hero-role">Graphic Designer</div>
       <p class="hero-desc" data-key="homeDesc">Creo identità visive e loghi che raccontano storie. Ogni segno è una scelta, ogni colore un'emozione.</p>
       <div class="hero-cta-row">
-        <a class="cta-primary" href="#" onclick="showPage('portfolio')"><span data-key="homeCta">Guarda i lavori</span> →</a>
+        <a class="cta-primary" href="#" onclick="showPage('portfolio')"><span data-key="homeCta">Guarda i lavori</span> ?</a>
         <a class="cta-secondary" href="#" onclick="showPage('contact')">Parliamoci</a>
       </div>
     </div>
@@ -771,7 +767,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   </div>
 </div>
 
-<!-- ══════════════════════════ ABOUT ══════════════════════════ -->
+<!-- -------------------------- ABOUT -------------------------- -->
 <div id="about" class="page" style="padding-top:64px;">
   <div class="section-intro">
     <div class="section-tag">Profile</div>
@@ -785,20 +781,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
           <rect width="420" height="560" fill="#0d0f14"/>
           <defs><pattern id="pg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="#1e2230" stroke-width="1"/></pattern></defs>
           <rect width="420" height="560" fill="url(#pg)"/>
-          <circle cx="210" cy="155" r="80" fill="#131620" stroke="#ff00ff" stroke-width="1" opacity=".3"/>
+          <circle cx="210" cy="155" r="80" fill="#131620" stroke="#b7ff00" stroke-width="1" opacity=".3"/>
           <circle cx="210" cy="155" r="55" fill="#1e2230"/>
-          <circle cx="192" cy="145" r="7" fill="#ff00ff" opacity=".8"/>
-          <circle cx="228" cy="145" r="7" fill="#ff00ff" opacity=".8"/>
-          <path d="M 196 170 Q 210 182 224 170" stroke="#ff00ff" stroke-width="2" fill="none" opacity=".6"/>
-          <path d="M 130 130 Q 140 60 210 70 Q 280 60 290 130" fill="#0a0b0f" stroke="#ff00ff" stroke-width="1" opacity=".4"/>
+          <circle cx="192" cy="145" r="7" fill="#b7ff00" opacity=".8"/>
+          <circle cx="228" cy="145" r="7" fill="#b7ff00" opacity=".8"/>
+          <path d="M 196 170 Q 210 182 224 170" stroke="#b7ff00" stroke-width="2" fill="none" opacity=".6"/>
+          <path d="M 130 130 Q 140 60 210 70 Q 280 60 290 130" fill="#0a0b0f" stroke="#b7ff00" stroke-width="1" opacity=".4"/>
           <path d="M 60 460 Q 80 320 140 295 L 210 330 L 280 295 Q 340 320 360 460 Z" fill="#131620"/>
-          <path d="M 60 460 Q 80 320 140 295 L 210 330 L 280 295 Q 340 320 360 460" fill="none" stroke="#ff00ff" stroke-width="1" opacity=".3"/>
-          <path d="M 20 20 L 20 50 M 20 20 L 50 20" stroke="#ff00ff" stroke-width="2" opacity=".6"/>
-          <path d="M 400 20 L 370 20 M 400 20 L 400 50" stroke="#ff00ff" stroke-width="2" opacity=".6"/>
-          <path d="M 20 540 L 20 510 M 20 540 L 50 540" stroke="#ff00ff" stroke-width="2" opacity=".6"/>
-          <path d="M 400 540 L 370 540 M 400 540 L 400 510" stroke="#ff00ff" stroke-width="2" opacity=".6"/>
-          <line x1="0" y1="280" x2="420" y2="280" stroke="#ff00ff" stroke-width=".5" opacity=".2"/>
-          <text x="20" y="550" font-family="monospace" font-size="9" fill="#ff00ff" opacity=".4" letter-spacing="2">VB.PORTFOLIO — 2025</text>
+          <path d="M 60 460 Q 80 320 140 295 L 210 330 L 280 295 Q 340 320 360 460" fill="none" stroke="#b7ff00" stroke-width="1" opacity=".3"/>
+          <path d="M 20 20 L 20 50 M 20 20 L 50 20" stroke="#b7ff00" stroke-width="2" opacity=".6"/>
+          <path d="M 400 20 L 370 20 M 400 20 L 400 50" stroke="#b7ff00" stroke-width="2" opacity=".6"/>
+          <path d="M 20 540 L 20 510 M 20 540 L 50 540" stroke="#b7ff00" stroke-width="2" opacity=".6"/>
+          <path d="M 400 540 L 370 540 M 400 540 L 400 510" stroke="#b7ff00" stroke-width="2" opacity=".6"/>
+          <line x1="0" y1="280" x2="420" y2="280" stroke="#b7ff00" stroke-width=".5" opacity=".2"/>
+          <text x="20" y="550" font-family="monospace" font-size="9" fill="#b7ff00" opacity=".4" letter-spacing="2">VB.PORTFOLIO — 2025</text>
         </svg>
         <img id="aboutImgEl" alt="Veronica Baccarin" src="about-photo-optimized.jpg" loading="lazy" decoding="async" fetchpriority="low" width="420" height="560" style="display:block;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"/>
       </div>
@@ -821,7 +817,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   </div>
 </div>
 
-<!-- ══════════════════════════ PORTFOLIO ══════════════════════════ -->
+<!-- -------------------------- PORTFOLIO -------------------------- -->
 <div id="portfolio" class="page" style="padding-top:64px;">
   <div class="section-intro">
     <div class="section-tag">Lavori</div>
@@ -837,7 +833,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   <div class="portfolio-grid" id="projectGrid"></div>
 </div>
 
-<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<!-- -------------------------- CONTACT -------------------------- -->
 <div id="contact" class="page" style="padding-top:64px;">
   <div class="section-intro">
     <div class="section-tag">Contatti</div>
@@ -848,9 +844,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
       <div class="contact-headline">LAVORIAMO<br><em>INSIEME?</em></div>
       <p class="contact-sub" data-key="contactSub">Hai un progetto in mente? Sono sempre felice di ascoltare nuove idee.</p>
       <div class="contact-links">
-        <a class="contact-row" id="linkEmail" href="#"><span class="contact-row-label">Email</span><span class="contact-row-val" data-key="contactEmail">baccavero@gmail.com</span><span class="contact-row-arrow">→</span></a>
-        <a class="contact-row" id="linkIg" href="#"><span class="contact-row-label">Instagram</span><span class="contact-row-val" data-key="contactIg">@veronica.baccarin</span><span class="contact-row-arrow">→</span></a>
-<a class="contact-row" id="linkLi" href="#"><span class="contact-row-label">LinkedIn</span><span class="contact-row-val" data-key="contactLi">Veronica Baccarin</span><span class="contact-row-arrow">→</span></a>
+        <a class="contact-row" id="linkEmail" href="#"><span class="contact-row-label">Email</span><span class="contact-row-val" data-key="contactEmail">baccavero@gmail.com</span><span class="contact-row-arrow">?</span></a>
+        <a class="contact-row" id="linkIg" href="#"><span class="contact-row-label">Instagram</span><span class="contact-row-val" data-key="contactIg">@veronica.baccarin</span><span class="contact-row-arrow">?</span></a>
+<a class="contact-row" id="linkLi" href="#"><span class="contact-row-label">LinkedIn</span><span class="contact-row-val" data-key="contactLi">Veronica Baccarin</span><span class="contact-row-arrow">?</span></a>
       </div>
     </div>
     <div class="contact-right">
@@ -859,7 +855,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
         <div class="cf-field"><label>Email</label><input type="email" name="email" placeholder="email@esempio.com" required/></div>
         <div class="cf-field"><label>Tipo di progetto</label><input type="text" name="projectType" placeholder="Brand, illustrazione, ..."/></div>
         <div class="cf-field"><label>Messaggio</label><textarea name="message" placeholder="Raccontami del progetto..." required></textarea></div>
-        <button class="cf-submit" type="submit">→ Invia messaggio</button>
+        <button class="cf-submit" type="submit">? Invia messaggio</button>
       </form>
     </div>
   </div>
@@ -875,11 +871,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
   <img id="projLightboxImg" class="proj-lightbox-img" alt="Anteprima progetto" onclick="event.stopPropagation()"/>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════
+<!-- ----------------------------------------------------------
      JAVASCRIPT
-══════════════════════════════════════════════════════════ -->
+---------------------------------------------------------- -->
 <script>
-/* ─── ADMIN LOGIN (hashed) ─── */
+/* --- ADMIN LOGIN (hashed) --- */
 const ADMIN_LOGIN={
   salt:'vb_portfolio_2025!static_salt',
   hash:'f818ea0d7a9a4d1ffa5af98c4ddb39bdb2c4eebda496c2f3bf4cf06158109a23', // sha256(salt|username:password)
@@ -898,28 +894,29 @@ function getLoginGuard(){
 function setLoginGuard(v){sessionStorage.setItem('vb_login_guard',JSON.stringify(v));}
 
 
-/* ─── SVG PLACEHOLDERS ─── */
+/* --- SVG PLACEHOLDERS --- */
 const SVG_P={
-  p1:`<svg viewBox="0 0 800 350" fill="none"><rect width="800" height="350" fill="#06070a"/><defs><pattern id="gp1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="#1e2230" stroke-width="1"/></pattern></defs><rect width="800" height="350" fill="url(#gp1)"/><circle cx="400" cy="175" r="120" stroke="#ff00ff" stroke-width="1" fill="none" opacity=".4"/><circle cx="400" cy="175" r="80" fill="#ff00ff" opacity=".07"/><text x="400" y="162" text-anchor="middle" font-family="serif" font-size="72" font-weight="300" fill="#eef0f5" opacity=".9">Folia</text><text x="400" y="196" text-anchor="middle" font-family="monospace" font-size="11" fill="#ff00ff" letter-spacing="10">BOTANICALS</text><line x1="0" y1="175" x2="800" y2="175" stroke="#ff00ff" stroke-width=".5" opacity=".15"/><line x1="400" y1="0" x2="400" y2="350" stroke="#ff00ff" stroke-width=".5" opacity=".15"/></svg>`,
-  p2:`<svg viewBox="0 0 380 500" fill="none"><rect width="380" height="500" fill="#0a0c10"/><defs><linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2a3a"/><stop offset="100%" stop-color="#0a0c10"/></linearGradient></defs><rect width="380" height="300" fill="url(#sk2)"/><circle cx="190" cy="150" r="55" fill="#3af0ff" opacity=".2"/><circle cx="190" cy="150" r="38" fill="#3af0ff" opacity=".4"/><path d="M 0 320 L 100 200 L 200 270 L 290 170 L 380 240 L 380 500 L 0 500 Z" fill="#1e2230"/><path d="M 0 360 L 80 270 L 150 315 L 240 240 L 320 295 L 380 270 L 380 500 L 0 500 Z" fill="#131620"/><circle cx="50" cy="80" r="2" fill="#3af0ff" opacity=".8"/><circle cx="300" cy="60" r="2" fill="#ff00ff" opacity=".7"/></svg>`,
-  p3:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#06070a"/><rect x="20" y="20" width="160" height="245" fill="#0d0f14" stroke="#ff00ff" stroke-width="1" opacity=".3"/><rect x="200" y="20" width="160" height="118" fill="#ff00ff" opacity=".1"/><rect x="200" y="148" width="76" height="117" fill="#3af0ff" opacity=".08"/><rect x="284" y="148" width="76" height="117" fill="#ff00ff" opacity=".06"/><text x="36" y="135" font-family="serif" font-size="42" fill="#eef0f5" opacity=".9">Aria</text><text x="36" y="158" font-family="monospace" font-size="8" fill="#ff00ff" opacity=".7" letter-spacing="4">MAGAZINE</text></svg>`,
-  p4:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#060d08"/><circle cx="190" cy="142" r="100" stroke="#ff00ff" stroke-width="1" fill="none" opacity=".3"/><circle cx="190" cy="142" r="70" stroke="#ff00ff" stroke-width=".5" fill="none" opacity=".2"/><text x="190" y="130" text-anchor="middle" font-family="serif" font-size="30" font-weight="300" fill="#ff00ff">Terra</text><text x="190" y="152" text-anchor="middle" font-family="serif" font-size="15" font-style="italic" fill="#ff00ff" opacity=".6">bistrot</text><text x="190" y="172" text-anchor="middle" font-family="monospace" font-size="7" fill="#4a5268" letter-spacing="6">EST. 2022</text></svg>`,
-  p5:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#08090c"/><line x1="190" y1="270" x2="190" y2="50" stroke="#3af0ff" stroke-width="2"/><path d="M 190 190 Q 140 165 128 125 Q 158 140 190 168 Z" fill="#ff00ff" opacity=".7"/><path d="M 190 190 Q 242 165 252 125 Q 222 140 190 168 Z" fill="#ff00ff" opacity=".5"/><circle cx="190" cy="48" r="24" fill="#ff00ff" opacity=".6"/><circle cx="190" cy="48" r="10" fill="#06070a"/></svg>`,
-  p6:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><line x1="0" y1="0" x2="0" y2="285" stroke="#ff00ff" stroke-width="3"/><line x1="380" y1="0" x2="380" y2="285" stroke="#ff00ff" stroke-width="3"/><polygon points="190,50 248,128 190,206 132,128" stroke="#eef0f5" stroke-width="1.5" fill="none" opacity=".6"/><circle cx="190" cy="130" r="26" fill="#ff00ff" opacity=".1" stroke="#ff00ff" stroke-width="1"/><text x="190" y="134" text-anchor="middle" font-family="monospace" font-size="13" fill="#ff00ff">LUX</text></svg>`,
-  p7:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><rect x="28" y="28" width="324" height="229" stroke="#4a5268" stroke-dasharray="8 8" fill="none"/><line x1="190" y1="104" x2="190" y2="182" stroke="#ff00ff" stroke-width="2"/><line x1="151" y1="143" x2="229" y2="143" stroke="#ff00ff" stroke-width="2"/><text x="190" y="210" text-anchor="middle" font-family="monospace" font-size="11" fill="#9aa0b8" letter-spacing="2">NUOVO LAVORO</text></svg>`
+  p1:`<svg viewBox="0 0 800 350" fill="none"><rect width="800" height="350" fill="#06070a"/><defs><pattern id="gp1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="#1e2230" stroke-width="1"/></pattern></defs><rect width="800" height="350" fill="url(#gp1)"/><circle cx="400" cy="175" r="120" stroke="#b7ff00" stroke-width="1" fill="none" opacity=".4"/><circle cx="400" cy="175" r="80" fill="#b7ff00" opacity=".07"/><text x="400" y="162" text-anchor="middle" font-family="serif" font-size="72" font-weight="300" fill="#eef0f5" opacity=".9">Folia</text><text x="400" y="196" text-anchor="middle" font-family="monospace" font-size="11" fill="#b7ff00" letter-spacing="10">BOTANICALS</text><line x1="0" y1="175" x2="800" y2="175" stroke="#b7ff00" stroke-width=".5" opacity=".15"/><line x1="400" y1="0" x2="400" y2="350" stroke="#b7ff00" stroke-width=".5" opacity=".15"/></svg>`,
+  p2:`<svg viewBox="0 0 380 500" fill="none"><rect width="380" height="500" fill="#0a0c10"/><defs><linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2a3a"/><stop offset="100%" stop-color="#0a0c10"/></linearGradient></defs><rect width="380" height="300" fill="url(#sk2)"/><circle cx="190" cy="150" r="55" fill="#3af0ff" opacity=".2"/><circle cx="190" cy="150" r="38" fill="#3af0ff" opacity=".4"/><path d="M 0 320 L 100 200 L 200 270 L 290 170 L 380 240 L 380 500 L 0 500 Z" fill="#1e2230"/><path d="M 0 360 L 80 270 L 150 315 L 240 240 L 320 295 L 380 270 L 380 500 L 0 500 Z" fill="#131620"/><circle cx="50" cy="80" r="2" fill="#3af0ff" opacity=".8"/><circle cx="300" cy="60" r="2" fill="#b7ff00" opacity=".7"/></svg>`,
+  p3:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#06070a"/><rect x="20" y="20" width="160" height="245" fill="#0d0f14" stroke="#b7ff00" stroke-width="1" opacity=".3"/><rect x="200" y="20" width="160" height="118" fill="#b7ff00" opacity=".1"/><rect x="200" y="148" width="76" height="117" fill="#3af0ff" opacity=".08"/><rect x="284" y="148" width="76" height="117" fill="#b7ff00" opacity=".06"/><text x="36" y="135" font-family="serif" font-size="42" fill="#eef0f5" opacity=".9">Aria</text><text x="36" y="158" font-family="monospace" font-size="8" fill="#b7ff00" opacity=".7" letter-spacing="4">MAGAZINE</text></svg>`,
+  p4:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#060d08"/><circle cx="190" cy="142" r="100" stroke="#b7ff00" stroke-width="1" fill="none" opacity=".3"/><circle cx="190" cy="142" r="70" stroke="#b7ff00" stroke-width=".5" fill="none" opacity=".2"/><text x="190" y="130" text-anchor="middle" font-family="serif" font-size="30" font-weight="300" fill="#b7ff00">Terra</text><text x="190" y="152" text-anchor="middle" font-family="serif" font-size="15" font-style="italic" fill="#b7ff00" opacity=".6">bistrot</text><text x="190" y="172" text-anchor="middle" font-family="monospace" font-size="7" fill="#4a5268" letter-spacing="6">EST. 2022</text></svg>`,
+  p5:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#08090c"/><line x1="190" y1="270" x2="190" y2="50" stroke="#3af0ff" stroke-width="2"/><path d="M 190 190 Q 140 165 128 125 Q 158 140 190 168 Z" fill="#b7ff00" opacity=".7"/><path d="M 190 190 Q 242 165 252 125 Q 222 140 190 168 Z" fill="#b7ff00" opacity=".5"/><circle cx="190" cy="48" r="24" fill="#b7ff00" opacity=".6"/><circle cx="190" cy="48" r="10" fill="#06070a"/></svg>`,
+  p6:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><line x1="0" y1="0" x2="0" y2="285" stroke="#b7ff00" stroke-width="3"/><line x1="380" y1="0" x2="380" y2="285" stroke="#b7ff00" stroke-width="3"/><polygon points="190,50 248,128 190,206 132,128" stroke="#eef0f5" stroke-width="1.5" fill="none" opacity=".6"/><circle cx="190" cy="130" r="26" fill="#b7ff00" opacity=".1" stroke="#b7ff00" stroke-width="1"/><text x="190" y="134" text-anchor="middle" font-family="monospace" font-size="13" fill="#b7ff00">LUX</text></svg>`,
+  p7:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><rect x="28" y="28" width="324" height="229" stroke="#4a5268" stroke-dasharray="8 8" fill="none"/><line x1="190" y1="104" x2="190" y2="182" stroke="#b7ff00" stroke-width="2"/><line x1="151" y1="143" x2="229" y2="143" stroke="#b7ff00" stroke-width="2"/><text x="190" y="210" text-anchor="middle" font-family="monospace" font-size="11" fill="#9aa0b8" letter-spacing="2">NUOVO LAVORO</text></svg>`,
+  p8:`<svg viewBox="0 0 380 285" fill="none"><rect width="380" height="285" fill="#07080b"/><rect x="28" y="28" width="324" height="229" stroke="#4a5268" stroke-dasharray="8 8" fill="none"/><line x1="190" y1="104" x2="190" y2="182" stroke="#b7ff00" stroke-width="2"/><line x1="151" y1="143" x2="229" y2="143" stroke="#b7ff00" stroke-width="2"/><text x="190" y="210" text-anchor="middle" font-family="monospace" font-size="11" fill="#9aa0b8" letter-spacing="2">NUOVO LAVORO</text></svg>`
 };
 
-/* ─── THEME PRESETS ─── */
+/* --- THEME PRESETS --- */
 const THEMES={
-  lime:  {accent:'#ff00ff',bg:'#06070a',surface:'#0d0f14',text:'#eef0f5',border:'#1e2230',muted:'#4a5268',border2:'#252a38'},
-  violet:{accent:'#9b6dff',bg:'#07060f',surface:'#100d1a',text:'#f0ecff',border:'#221a35',muted:'#5a4d7a',border2:'#2e2246'},
+  lime:  {accent:'#b7ff00',bg:'#06070a',surface:'#0d0f14',text:'#eef0f5',border:'#1e2230',muted:'#4a5268',border2:'#252a38'},
+  violet:{accent:'#b7ff00',bg:'#07060f',surface:'#100d1a',text:'#f0ecff',border:'#221a35',muted:'#5a4d7a',border2:'#2e2246'},
   coral: {accent:'#ff6b4a',bg:'#0c0806',surface:'#180e0a',text:'#f5f0ec',border:'#2a1810',muted:'#6a4a3a',border2:'#3a2018'},
   ice:   {accent:'#00e5ff',bg:'#05090d',surface:'#0a1018',text:'#e8f4ff',border:'#0f1e2e',muted:'#3a5a6a',border2:'#152838'},
   rose:  {accent:'#ff3d7f',bg:'#0d080b',surface:'#180d12',text:'#fff0f5',border:'#2a1020',muted:'#6a3050',border2:'#3a1830'},
   white: {accent:'#1a1510',bg:'#f8f6f2',surface:'#eeeae2',text:'#1a1510',border:'#d4cdc0',muted:'#7a7065',border2:'#c4bdb0'}
 };
 
-/* ─── FONT PRESETS ─── */
+/* --- FONT PRESETS --- */
 const FONTS={
   tech:     {display:"'Bebas Neue',cursive",   body:"'IBM Plex Mono',monospace",  ui:"'Syne',sans-serif"},
   editorial:{display:"'Playfair Display',serif",body:"'DM Sans',sans-serif",       ui:"'Playfair Display',serif"},
@@ -927,7 +924,7 @@ const FONTS={
   mono:     {display:"'IBM Plex Mono',monospace",body:"'IBM Plex Mono',monospace", ui:"'IBM Plex Mono',monospace"}
 };
 
-/* ─── DEFAULT DATA ─── */
+/* --- DEFAULT DATA --- */
 const DEF={
   homeTag:'GRAPHIC DESIGN · LOGO DESIGNER · BRANDING',
   homeDesc:"Creo identità visive e loghi che raccontano storie. Ogni segno è una scelta, ogni colore un'emozione.",
@@ -950,7 +947,8 @@ const DEF={
     {id:'p4',name:'Natura Viva - Editoriale',cat:'editorial',catLabel:'Editoriale',shape:'',img:'mockup_succhi_1_supermercato-optimized.jpg'},
     {id:'p5',name:'Eden Studio - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'chatgpt-image-24-feb-2026-09_58_09-optimized.jpg'},
     {id:'p6',name:"L'Abete - Manuale del brand",cat:'brand',catLabel:'Branding',shape:'',img:'chatgpt-image-24-feb-2026-09_50_11-optimized.jpg'},
-    {id:'p7',name:'Nuovo Progetto',cat:'brand',catLabel:'Branding',shape:'',img:null}
+    {id:'p7',name:'Morpha - Logo Design',cat:'illustration',catLabel:'Logo Design',shape:'',img:'morpha-logo-design-optimized.jpg'},
+    {id:'p8',name:'Morpha Mantis Brochure - Editoriale',cat:'editorial',catLabel:'Editoriale',shape:'',img:'morpha-mantis-brochure-editoriale-optimized.jpg'}
   ],
   // design
   theme:'lime',
@@ -965,11 +963,11 @@ let D=JSON.parse(JSON.stringify(DEF));
 let isAdmin=false;
 let portfolioRendered=false;
 
-/* ─── STORAGE ─── */
+/* --- STORAGE --- */
 async function sGet(k){try{if(window.storage){const r=await window.storage.get(k);return r?r.value:null;}}catch(e){}return sessionStorage.getItem(k);}
 async function sSet(k,v){try{if(window.storage){await window.storage.set(k,v);return;}}catch(e){}sessionStorage.setItem(k,v);}
 
-/* ─── CURSOR ─── */
+/* --- CURSOR --- */
 const CE=document.getElementById('cursor'),RE=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;CE.style.left=mx+'px';CE.style.top=my+'px';});
@@ -981,7 +979,7 @@ function rebind(){
   });
 }
 
-/* ─── ROUTING ─── */
+/* --- ROUTING --- */
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active','fade-in');p.style.display='none';});
   const t=document.getElementById(id);t.style.display='block';void t.offsetWidth;
@@ -1040,7 +1038,7 @@ function cfSubmit(e){
     b.textContent='Compila i campi obbligatori';
     b.style.background='var(--danger)';
     b.style.color='#fff';
-    setTimeout(()=>{b.textContent='→ Invia messaggio';b.style.background='';b.style.color='';},2200);
+    setTimeout(()=>{b.textContent='? Invia messaggio';b.style.background='';b.style.color='';},2200);
     return;
   }
   const subject=`Nuovo contatto dal sito - ${name}`;
@@ -1054,13 +1052,13 @@ function cfSubmit(e){
   ].join('\n');
   const mailto=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href=mailto;
-  b.textContent='✓ Email pronta';
+  b.textContent='? Email pronta';
   b.style.background='var(--success)';
   b.style.color='#fff';
-  setTimeout(()=>{b.textContent='→ Invia messaggio';b.style.background='';b.style.color='';},2500);
+  setTimeout(()=>{b.textContent='? Invia messaggio';b.style.background='';b.style.color='';},2500);
 }
 
-/* ─── COUNTER ─── */
+/* --- COUNTER --- */
 function animateCounters(){
   document.querySelectorAll('.stat-num').forEach(el=>{
     const raw=el.textContent.replace(/\D/g,'');const target=parseInt(raw)||0;const suf=el.textContent.replace(/[0-9]/g,'');
@@ -1070,7 +1068,7 @@ function animateCounters(){
   setTimeout(()=>{document.querySelectorAll('.stat-bar-fill').forEach(b=>{b.style.width=b.dataset.pct+'%';});},200);
 }
 
-/* ─── APPLY DATA ─── */
+/* --- APPLY DATA --- */
 function setKey(k,v){document.querySelectorAll('[data-key="'+k+'"]').forEach(e=>e.textContent=v);}
 const catL=c=>({brand:'Brand Identity',illustration:'Loghi',editorial:'Editoriale'}[c]||c);
 
@@ -1111,7 +1109,7 @@ function renderGrid(projects){
     const cls='proj-card'+(p.shape?' '+p.shape:'');
     const thumb=p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy" decoding="async" fetchpriority="low"/>`:(SVG_P[p.id]||'');
     const clickData=p.img?` data-fullimg="${encodeURIComponent(p.img)}" data-alt="${encodeURIComponent(p.name)}"`:'';
-    const arrow=p.img?`<button class="proj-overlay-arrow" type="button" aria-label="Apri immagine ${p.name}" data-fullimg="${encodeURIComponent(p.img)}" data-alt="${encodeURIComponent(p.name)}">↗</button>`:'';
+    const arrow=p.img?`<button class="proj-overlay-arrow" type="button" aria-label="Apri immagine ${p.name}" data-fullimg="${encodeURIComponent(p.img)}" data-alt="${encodeURIComponent(p.name)}">?</button>`:'';
     return`<div class="${cls}" data-cat="${p.cat}">
       <div class="proj-thumb"${clickData}>${thumb}<div class="proj-overlay">${arrow}<div class="proj-overlay-cat">${p.catLabel||catL(p.cat)}</div><div class="proj-overlay-name">${p.name}</div></div></div>
       <div class="proj-label"><div class="proj-name">${p.name}</div><div class="proj-cat-tag">${p.catLabel||catL(p.cat)}</div></div>
@@ -1213,7 +1211,7 @@ if(projLightboxEl){
   },{passive:true});
 }
 
-/* ─── DESIGN ENGINE ─── */
+/* --- DESIGN ENGINE --- */
 function applyDesign(d){
   const root=document.documentElement;
   // Colors: custom overrides or preset
@@ -1251,13 +1249,13 @@ function lightenHex(hex,amt){
   }catch(e){return hex;}
 }
 
-/* ─── TOAST ─── */
+/* --- TOAST --- */
 function toast(msg,type=''){
   const t=document.getElementById('toast');t.textContent=msg;t.className='show '+(type==='ok'?'ok':'');
   setTimeout(()=>t.className='',2800);
 }
 
-/* ─── LOGIN ─── */
+/* --- LOGIN --- */
 function openLogin(){if(isAdmin){openAdmin();return;} document.getElementById('loginModal').classList.add('open'); document.getElementById('loginUser').value=''; document.getElementById('loginPass').value=''; document.getElementById('loginErr').style.display='none'; setTimeout(()=>document.getElementById('loginUser').focus(),200);}
 function closeLogin(){document.getElementById('loginModal').classList.remove('open');}
 async function doLogin(){
@@ -1287,7 +1285,7 @@ async function doLogin(){
   }
 }
 
-/* ─── ADMIN PANEL ─── */
+/* --- ADMIN PANEL --- */
 function openAdmin(){document.getElementById('adminPanel').classList.add('open');populateForms();}
 function closeAdmin(){document.getElementById('adminPanel').classList.remove('open');}
 function logout(){isAdmin=false;closeAdmin();toast('Sessione terminata.');}
@@ -1333,7 +1331,7 @@ function renderProjEditor(projects){
     <div class="pec" id="pec-${p.id}">
       <div class="pec-head" onclick="tgProj('ped-${p.id}','par-${p.id}')">
         <div><div class="pec-name" id="pen-${p.id}">${p.name}</div><div class="pec-cat">${catL(p.cat)}</div></div>
-        <span class="pec-arr" id="par-${p.id}">▾</span>
+        <span class="pec-arr" id="par-${p.id}">?</span>
       </div>
       <div class="pec-det" id="ped-${p.id}">
         <div class="ap-f"><label>Nome progetto</label><input type="text" value="${p.name}" oninput="D.projects[${i}].name=this.value;document.getElementById('pen-${p.id}').textContent=this.value;"/></div>
@@ -1346,12 +1344,12 @@ function renderProjEditor(projects){
         </div>
         <div class="ap-f"><label>Immagine (sostituisce la grafica)</label>
           <div class="img-drop" onclick="document.getElementById('pi-${p.id}').click()">
-            <div class="img-drop-lbl">${p.img?'✓ Caricata — clicca per cambiare':'📁 Carica immagine JPG/PNG'}</div>
+            <div class="img-drop-lbl">${p.img?'? Caricata — clicca per cambiare':'?? Carica immagine JPG/PNG'}</div>
             <input type="file" id="pi-${p.id}" accept="image/*" style="display:none" onchange="handleProjImg(this,${i},'${p.id}')"/>
             <img id="pip-${p.id}" class="img-prev" ${p.img?`src="${p.img}" style="display:block;"`:''}/>
           </div>
         </div>
-        ${p.img?`<div class="ap-f"><button class="ap-dbtn" onclick="clrProjImg(${i},'${p.id}')">🗑 Rimuovi immagine</button></div>`:''}
+        ${p.img?`<div class="ap-f"><button class="ap-dbtn" onclick="clrProjImg(${i},'${p.id}')">?? Rimuovi immagine</button></div>`:''}
       </div>
     </div>`).join('');
 }
@@ -1372,7 +1370,7 @@ function handleImg(inp,sk,prevId){
 }
 function clearAboutImg(){D.aboutImg=null;document.getElementById('abiPrev').style.display='none';document.getElementById('abiClearWrap').style.display='none';}
 
-/* ─── DESIGN FORMS ─── */
+/* --- DESIGN FORMS --- */
 function populateDesignForms(){
   const t=THEMES[D.theme]||THEMES.lime;
   const c=D.colors||{};
@@ -1455,7 +1453,7 @@ function sliderGrid(v){
   document.documentElement.style.setProperty('--grid-size',v+'px');
 }
 
-/* ─── SAVE ALL ─── */
+/* --- SAVE ALL --- */
 async function saveAll(){
   D.homeTag=document.getElementById('f-homeTag').value.trim();
   D.homeDesc=document.getElementById('f-homeDesc').value.trim();
@@ -1474,12 +1472,12 @@ async function saveAll(){
   try{await sSet('vb3',JSON.stringify(D));}catch(e){}
   applyData(D);
   const b=document.getElementById('apSave');
-  b.textContent='✓ Salvato!';b.classList.add('saved');
+  b.textContent='? Salvato!';b.classList.add('saved');
   toast('Tutte le modifiche salvate!','ok');
-  setTimeout(()=>{b.textContent='💾 Salva tutte le modifiche';b.classList.remove('saved');},2400);
+  setTimeout(()=>{b.textContent='?? Salva tutte le modifiche';b.classList.remove('saved');},2400);
 }
 
-/* ─── INIT ─── */
+/* --- INIT --- */
 async function init(){
   try{
     const sv=await sGet('vb3');
@@ -1492,3 +1490,4 @@ init();
 </script>
 </body>
 </html>
+
